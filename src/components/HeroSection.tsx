@@ -100,7 +100,7 @@ const HeroSection = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-32 left-20 ui-element">
+        <div className="absolute bottom-10 left-5 ui-element">
           <div className="bg-card/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-border/50 w-48">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
@@ -136,7 +136,7 @@ const HeroSection = () => {
           {/* Left Column - Text Content */}
           <div ref={textRef} className="space-y-8 z-10 relative">
             <div className="space-y-6">
-              <div className="text-primary text-sm font-semibold tracking-wider uppercase font-inter animate-pulse-glow">
+              <div className="text-primary text-sm font-semibold tracking-wider uppercase font-inter">
                 Psychology Student
               </div>
               <h1 className="text-5xl md:text-7xl font-bold text-foreground tracking-tight leading-none">

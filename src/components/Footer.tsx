@@ -50,15 +50,6 @@ const Footer = () => {
             ))}
           </div>
         </div>
-
-        <div className="border-t border-border mt-8 pt-8 text-center">
-          <p className="text-muted-foreground flex items-center justify-center font-inter">
-            Made with <Heart className="w-4 h-4 text-primary mx-1 animate-pulse" /> for psychological research and discovery
-          </p>
-          <p className="text-muted-foreground text-sm mt-2 font-inter">
-            © 2024 Genesis Palero Martin. All rights reserved.
-          </p>
-        </div>
       </div>
     </footer>
   );
