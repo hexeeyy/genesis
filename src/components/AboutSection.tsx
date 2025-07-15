@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Brain, Users, BookOpen } from 'lucide-react';
+import { Brain, Users, BookOpen, Award } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -28,63 +28,76 @@ const AboutSection = () => {
     );
   }, []);
 
-  const interests = [
-    { icon: Brain, title: "Cognitive Psychology", description: "Understanding mental processes and decision-making" },
-    { icon: Users, title: "Social Behavior", description: "Exploring human interactions and group dynamics" },
-    { icon: BookOpen, title: "Research Methods", description: "Evidence-based approaches to psychological inquiry" }
+  const highlights = [
+    { icon: Brain, title: "Cognitive Research", description: "Advanced understanding of mental processes" },
+    { icon: Users, title: "Behavioral Analysis", description: "Expertise in human interaction patterns" },
+    { icon: BookOpen, title: "Academic Excellence", description: "Strong foundation in psychological theory" },
+    { icon: Award, title: "Research Impact", description: "Contributing to evidence-based practice" }
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-muted/30">
+    <section id="about" ref={sectionRef} className="py-24 bg-card">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
+          <div className="text-primary text-sm font-semibold tracking-wider uppercase mb-4">
+            About Me
+          </div>
           <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
-            About
+            Dedicated to Understanding
+            <span className="block text-gradient">Human Behavior</span>
           </h2>
-          <div className="w-16 h-px bg-primary mx-auto mb-8"></div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
-            Passionate about understanding the complexities of human behavior and 
-            applying psychological principles to create positive change.
-          </p>
+          <div className="w-24 h-1 bg-primary mx-auto mb-8 rounded-full"></div>
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <div className="space-y-6">
-            <h3 className="text-2xl font-light text-foreground">
-              Journey in Psychology
-            </h3>
-            <div className="space-y-4 text-muted-foreground leading-relaxed font-light">
-              <p>
-                Currently pursuing advanced studies in psychology with a focus on 
-                cognitive behavioral approaches and evidence-based interventions.
-              </p>
-              <p>
-                My research interests span across developmental psychology, mental health, 
-                and the intersection of technology and human behavior.
-              </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I am a dedicated psychology student with a passion for understanding the complexities 
+              of human cognition and behavior. My academic journey focuses on evidence-based research 
+              and practical applications in mental health.
+            </p>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Through rigorous study and hands-on research experience, I aim to contribute meaningful 
+              insights to the field of psychology and help bridge the gap between theory and practice.
+            </p>
+            
+            <div className="pt-4">
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <div className="text-3xl font-bold text-primary">3.8</div>
+                  <div className="text-sm text-muted-foreground">GPA</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-primary">15+</div>
+                  <div className="text-sm text-muted-foreground">Research Projects</div>
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="relative">
-            <div className="w-full h-64 bg-muted rounded-2xl flex items-center justify-center">
-              <div className="text-6xl opacity-20">🧠</div>
+            <div className="aspect-square bg-gradient-to-br from-primary/5 to-primary/15 rounded-2xl p-8 flex items-center justify-center">
+              <div className="text-center space-y-4">
+                <div className="text-6xl text-primary/40">心理学</div>
+                <div className="text-sm text-muted-foreground font-medium">Psychology</div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Interest Areas */}
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {interests.map((interest, index) => (
+        {/* Highlights Grid */}
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {highlights.map((highlight, index) => (
             <div 
               key={index}
-              className="bg-card border border-border p-8 rounded-2xl hover:shadow-lg transition-all duration-300 group"
+              className="bg-background border border-border p-6 rounded-xl hover:shadow-lg transition-all duration-300 group hover:border-primary/20"
             >
-              <interest.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
-              <h4 className="text-lg font-medium text-foreground mb-3">{interest.title}</h4>
-              <p className="text-muted-foreground font-light leading-relaxed">{interest.description}</p>
+              <highlight.icon className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
+              <h4 className="text-lg font-semibold text-foreground mb-2">{highlight.title}</h4>
+              <p className="text-sm text-muted-foreground leading-relaxed">{highlight.description}</p>
             </div>
           ))}
         </div>

@@ -66,12 +66,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				japanese: {
-					dark: '#0A0A0A',
-					light: '#FAFAFA',
-					red: '#E53E3E',
-					gold: '#F6E05E',
-					gray: '#9CA3AF'
+				professional: {
+					blue: {
+						50: 'hsl(210, 40%, 98%)',
+						100: 'hsl(210, 40%, 96%)',
+						500: 'hsl(221, 83%, 53%)',
+						600: 'hsl(221, 83%, 45%)',
+						700: 'hsl(221, 83%, 38%)',
+						900: 'hsl(222, 84%, 4.9%)'
+					}
 				}
 			},
 			borderRadius: {
