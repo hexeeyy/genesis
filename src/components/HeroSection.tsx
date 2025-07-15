@@ -182,7 +182,7 @@ const HeroSection = () => {
                 
                 {/* Center image replacing Japanese character */}
                 <img
-                  src="src\assets\gen.jpg" // Replace with your image path or URL
+                  src="public\gen.jpg" // Replace with your image path or URL
                   alt="Genesis Palero Martin"
                   className="w-3/4 h-3/4 object-cover rounded-2xl select-none hover:scale-110 transition-transform duration-500"
                 />
