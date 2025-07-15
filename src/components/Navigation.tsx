@@ -17,8 +17,8 @@ const Navigation = () => {
 
   useEffect(() => {
     gsap.fromTo('.nav-item', 
-      { y: -20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.2 }
+      { y: -10, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, delay: 0.2 }
     );
   }, []);
 
@@ -32,21 +32,21 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-japanese-dark/90 backdrop-blur-md' : 'bg-transparent'
+      scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="nav-item">
-            <span className="text-xl font-bold text-gradient">ポートフォリオ</span>
+            <span className="text-xl font-light text-foreground">心理学</span>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="nav-item text-japanese-light hover:text-japanese-red transition-colors duration-300 font-medium"
+                className="nav-item text-muted-foreground hover:text-foreground transition-colors duration-300 font-light"
               >
                 {item.name}
               </a>
@@ -57,7 +57,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-japanese-light hover:text-japanese-red transition-colors duration-300"
+              className="text-foreground hover:text-primary transition-colors duration-300"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -66,13 +66,13 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden bg-japanese-dark/95 backdrop-blur-md">
+          <div className="md:hidden bg-background/95 backdrop-blur-md border-b border-border">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-japanese-light hover:text-japanese-red transition-colors duration-300"
+                  className="block px-3 py-2 text-muted-foreground hover:text-foreground transition-colors duration-300 font-light"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

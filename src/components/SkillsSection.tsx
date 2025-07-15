@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { Code, Palette, Smartphone, Globe } from 'lucide-react';
+import { BookOpen, Users, BarChart3, Microscope } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -21,11 +21,11 @@ const SkillsSection = () => {
         { width: '0%' },
         {
           width: `${percentage}%`,
-          duration: 1.5,
-          ease: "power3.out",
+          duration: 1.2,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: bar,
-            start: "top 85%",
+            start: "top 90%",
             toggleActions: "play none none reverse"
           }
         }
@@ -33,13 +33,13 @@ const SkillsSection = () => {
     });
 
     gsap.fromTo(skillsRef.current?.children,
-      { y: 60, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
@@ -51,57 +51,58 @@ const SkillsSection = () => {
 
   const skillCategories = [
     {
-      icon: Code,
-      title: "Frontend Development",
+      icon: BookOpen,
+      title: "Theoretical Knowledge",
       skills: [
-        { name: "React / Next.js", level: 95 },
-        { name: "TypeScript", level: 90 },
-        { name: "JavaScript", level: 95 },
-        { name: "HTML/CSS", level: 98 }
+        { name: "Cognitive Psychology", level: 85 },
+        { name: "Developmental Psychology", level: 80 },
+        { name: "Abnormal Psychology", level: 75 },
+        { name: "Social Psychology", level: 82 }
       ]
     },
     {
-      icon: Palette,
-      title: "Design & Animation",
+      icon: Microscope,
+      title: "Research Skills",
       skills: [
-        { name: "UI/UX Design", level: 85 },
-        { name: "GSAP", level: 80 },
-        { name: "Figma", level: 88 },
-        { name: "Adobe Suite", level: 82 }
+        { name: "Statistical Analysis", level: 78 },
+        { name: "Research Design", level: 85 },
+        { name: "Data Collection", level: 80 },
+        { name: "Literature Review", level: 88 }
       ]
     },
     {
-      icon: Smartphone,
-      title: "Mobile & Responsive",
+      icon: Users,
+      title: "Clinical Skills",
       skills: [
-        { name: "React Native", level: 75 },
-        { name: "Responsive Design", level: 95 },
-        { name: "PWA Development", level: 80 },
-        { name: "Mobile-First", level: 92 }
+        { name: "Active Listening", level: 90 },
+        { name: "Empathy", level: 95 },
+        { name: "Assessment", level: 70 },
+        { name: "Documentation", level: 85 }
       ]
     },
     {
-      icon: Globe,
-      title: "Backend & Tools",
+      icon: BarChart3,
+      title: "Technical Tools",
       skills: [
-        { name: "Node.js", level: 80 },
-        { name: "Python", level: 75 },
-        { name: "Git/GitHub", level: 95 },
-        { name: "Docker", level: 70 }
+        { name: "SPSS", level: 75 },
+        { name: "R Programming", level: 65 },
+        { name: "Academic Writing", level: 88 },
+        { name: "Case Studies", level: 80 }
       ]
     }
   ];
 
   return (
-    <section id="skills" ref={sectionRef} className="py-20 bg-gradient-to-br from-japanese-dark via-gray-900 to-japanese-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" ref={sectionRef} className="py-20 bg-background">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-japanese-light mb-4">
-            Technical Skills
+          <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
+            Competencies
           </h2>
-          <div className="w-24 h-1 bg-japanese-red mx-auto mb-8"></div>
-          <p className="text-lg text-japanese-gray max-w-3xl mx-auto leading-relaxed">
-            A comprehensive toolkit honed through years of dedication and continuous learning
+          <div className="w-16 h-px bg-primary mx-auto mb-8"></div>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
+            Building expertise across theoretical knowledge, research methodology, 
+            and practical application
           </p>
         </div>
 
@@ -109,23 +110,23 @@ const SkillsSection = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div 
               key={categoryIndex}
-              className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:border-japanese-red/50 transition-all duration-300"
+              className="bg-card border border-border p-8 rounded-2xl"
             >
               <div className="flex items-center mb-6">
-                <category.icon className="w-8 h-8 text-japanese-red mr-3" />
-                <h3 className="text-xl font-semibold text-japanese-light">{category.title}</h3>
+                <category.icon className="w-6 h-6 text-primary mr-3" />
+                <h3 className="text-xl font-medium text-foreground">{category.title}</h3>
               </div>
               
               <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex} className="skill-bar">
                     <div className="flex justify-between items-center mb-2">
-                      <span className="text-japanese-light font-medium">{skill.name}</span>
-                      <span className="text-japanese-gray text-sm">{skill.level}%</span>
+                      <span className="text-foreground font-light">{skill.name}</span>
+                      <span className="text-muted-foreground text-sm">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-japanese-dark/50 rounded-full h-2">
+                    <div className="w-full bg-muted rounded-full h-1">
                       <div 
-                        className="skill-progress h-2 bg-gradient-to-r from-japanese-red to-japanese-gold rounded-full"
+                        className="skill-progress h-1 bg-primary rounded-full"
                         data-percentage={skill.level}
                       ></div>
                     </div>
@@ -134,11 +135,6 @@ const SkillsSection = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Japanese Characters Decoration */}
-        <div className="absolute right-10 top-1/2 transform -translate-y-1/2 opacity-10 pointer-events-none hidden xl:block">
-          <div className="text-9xl text-japanese-red font-light">技</div>
         </div>
       </div>
     </section>

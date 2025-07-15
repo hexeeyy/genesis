@@ -24,10 +24,6 @@ const Index = () => {
       });
     });
 
-    // Initial page load animation
-    gsap.set('body', { overflow: 'hidden' });
-    gsap.to('body', { overflow: 'auto', delay: 0.5 });
-
     return () => {
       links.forEach(link => {
         link.removeEventListener('click', () => {});
@@ -36,7 +32,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-japanese-dark">
+    <div className="min-h-screen bg-background">
       <Navigation />
       <HeroSection />
       <AboutSection />
