@@ -180,10 +180,12 @@ const HeroSection = () => {
                 <div className="floating-element absolute bottom-12 left-8 w-16 h-16 bg-primary/40 rounded-lg rotate-45 shimmer-bg animate-shimmer"></div>
                 <div className="floating-element absolute top-1/3 left-4 w-12 h-12 bg-primary/25 rounded-full"></div>
                 
-                {/* Center Japanese character with enhanced styling */}
-                <div className="text-9xl text-primary/40 font-bold select-none hover:text-primary/60 transition-colors duration-500 cursor-pointer hover:scale-110 transform">
-                  心
-                </div>
+                {/* Center image replacing Japanese character */}
+                <img
+                  src="src\assets\gen.jpg" // Replace with your image path or URL
+                  alt="Genesis Palero Martin"
+                  className="w-3/4 h-3/4 object-cover rounded-2xl select-none hover:scale-110 transition-transform duration-500"
+                />
                 
                 {/* Animated decorative elements */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-primary/15 rounded-3xl"></div>
@@ -192,6 +194,8 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
+
+        
 
         {/* Enhanced Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:scale-110 transition-transform duration-300">
