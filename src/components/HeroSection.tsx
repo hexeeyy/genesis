@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { ChevronDown, Download, Eye, MessageCircle } from 'lucide-react';
+import { ChevronDown, Download, Eye, MessageCircle, Star, Play, FileText, Users, Bookmark } from 'lucide-react';
 import gsap from 'gsap';
 
 const HeroSection = () => {
@@ -16,7 +16,7 @@ const HeroSection = () => {
       { y: 0, opacity: 1, scale: 1, duration: 1, stagger: 0.2, ease: "back.out(1.7)" }
     );
 
-    // Enhanced floating animation
+    // Enhanced floating animation for decorative elements
     gsap.to(".floating-element", {
       y: -15,
       rotation: 5,
@@ -25,6 +25,17 @@ const HeroSection = () => {
       yoyo: true,
       ease: "power2.inOut",
       stagger: 0.3
+    });
+
+    // Decorative UI elements animation
+    gsap.to(".ui-element", {
+      y: -10,
+      rotation: 2,
+      duration: 6,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      stagger: 0.5
     });
 
     // Shimmer effect
@@ -64,6 +75,61 @@ const HeroSection = () => {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-background via-accent/10 to-primary/5">
       <div ref={heroRef} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        {/* Decorative UI Elements - Similar to uploaded design */}
+        <div className="absolute top-10 left-10 ui-element">
+          <div className="bg-card/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-border/50">
+            <div className="grid grid-cols-3 gap-2">
+              <div className="w-8 h-6 bg-primary/20 rounded"></div>
+              <div className="w-8 h-6 bg-primary/30 rounded"></div>
+              <div className="w-8 h-6 bg-primary/25 rounded"></div>
+              <div className="w-8 h-6 bg-primary/15 rounded"></div>
+              <div className="w-8 h-6 bg-primary/35 rounded"></div>
+              <div className="w-8 h-6 bg-primary/20 rounded"></div>
+            </div>
+            <div className="text-xs text-muted-foreground mt-2 font-inter">Portfolio</div>
+          </div>
+        </div>
+
+        <div className="absolute top-20 right-16 ui-element">
+          <div className="bg-card/80 backdrop-blur-sm rounded-lg p-3 shadow-lg border border-border/50 flex items-center gap-2">
+            <Star className="w-4 h-4 text-primary" />
+            <Star className="w-4 h-4 text-primary" />
+            <Star className="w-4 h-4 text-primary" />
+            <Star className="w-4 h-4 text-muted-foreground" />
+            <Star className="w-4 h-4 text-muted-foreground" />
+          </div>
+        </div>
+
+        <div className="absolute bottom-32 left-20 ui-element">
+          <div className="bg-card/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-border/50 w-48">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center">
+                <Play className="w-4 h-4 text-primary" />
+              </div>
+              <div className="text-sm font-medium font-inter">Psychology Study</div>
+            </div>
+            <div className="w-full h-2 bg-accent rounded-full">
+              <div className="w-3/4 h-2 bg-primary rounded-full"></div>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute top-32 right-32 ui-element">
+          <div className="bg-card/80 backdrop-blur-sm rounded-lg p-3 shadow-lg border border-border/50">
+            <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-2">
+              <FileText className="w-6 h-6 text-primary" />
+            </div>
+            <div className="text-xs text-muted-foreground font-inter">Research</div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-40 right-20 ui-element">
+          <div className="bg-card/80 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-border/50 flex items-center gap-2">
+            <Users className="w-5 h-5 text-primary" />
+            <div className="text-sm font-medium font-inter">Community</div>
+          </div>
+        </div>
+
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -138,6 +204,17 @@ const HeroSection = () => {
       {/* Background decorative elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-xl animate-float"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-primary/5 rounded-full blur-xl animate-float" style={{animationDelay: '1s'}}></div>
+      
+      {/* Additional decorative elements */}
+      <div className="absolute top-1/2 left-4 ui-element">
+        <div className="w-4 h-4 bg-primary/30 rounded-full"></div>
+      </div>
+      <div className="absolute top-1/4 right-8 ui-element">
+        <div className="w-6 h-6 bg-primary/20 rotate-45"></div>
+      </div>
+      <div className="absolute bottom-1/3 left-16 ui-element">
+        <div className="w-3 h-3 bg-primary/40 rounded-full"></div>
+      </div>
     </section>
   );
 };

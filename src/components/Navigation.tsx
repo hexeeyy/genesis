@@ -46,7 +46,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           <div className="nav-item">
             <span className="text-xl font-bold font-inter text-primary hover:scale-105 transition-transform duration-300 cursor-pointer">
-              Genesis Palero
+              Genesis Martin
             </span>
           </div>
 
