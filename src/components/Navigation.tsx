@@ -43,12 +43,12 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      scrolled ? 'bg-card/95 backdrop-blur-xl border-b border-border shadow-strong' : 'bg-transparent'
+      scrolled ? 'bg-card/95 backdrop-blur-xl border-b border-border shadow-strong': 'bg-transparent'
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="nav-item">
-            <span className="text-xl font-bold font-inter text-primary hover:scale-105 transition-transform duration-300 cursor-pointer">
+            <span className="text-xl font-bold font-display text-primary hover:scale-105 transition-transform duration-300 cursor-pointer">
               Genesis Martin
             </span>
           </div>
@@ -59,10 +59,10 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className="nav-item text-muted-foreground hover:text-ocean transition-all duration-300 font-medium relative group font-inter"
+                className="nav-item text-muted-foreground hover:text-palette-ocean transition-all duration-300 font-medium relative group font-poppins"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ocean transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-palette-ocean transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
