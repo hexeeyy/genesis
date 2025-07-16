@@ -43,7 +43,7 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      scrolled ? 'bg-card/95 backdrop-blur-xl border-b border-border shadow-strong': 'bg-transparent'
+      scrolled ? 'bg-card/95 backdrop-blur-xl border-b border-border shadow-strong paper-texture-sage': 'bg-transparent'
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">

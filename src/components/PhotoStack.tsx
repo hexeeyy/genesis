@@ -77,7 +77,7 @@ const PhotoStack = () => {
               src={photo}
               alt={`Photo ${i + 1}`}
               className={`absolute object-cover mt-[-30px] rounded-md transition-all duration-700 ease-in-out w-[80%] h-[80%] sm:w-[65%] sm:h-[65%] backdrop-blur-sm border-1 border-victorian-gold/30 p-2 shadow-victorian
-                  ${isTop ? 'z-50 opacity-100 scale-100 cursor-pointer hover:ring-1 hover:ring-amber-200 hover:ring-offset-0 hover:brightness-110 hover:shadow-[0_0_15px_5px_rgba(255,200,100,0.6)]' : 'z-40 opacity-60 scale-95'}
+                  ${isTop ? 'z-50 opacity-100 scale-100 cursor-pointer hover:ring-palette-cream-100 hover:ring-offset-0 hover:brightness-110 hover:shadow-[0_0_15px_5px_rgba(255,200,100,0.6)]' : 'z-40 opacity-60 scale-95'}
               `}
               style={{
                   transform: `translateX(${(i - currentIndex) * 5}px) rotate(${(i - currentIndex) * 2}deg)`,
