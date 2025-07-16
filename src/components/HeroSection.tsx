@@ -1,6 +1,5 @@
-
 import { useEffect, useRef } from 'react';
-import { ChevronDown, Download, Eye, FileText, Users, Leaf, Coffee, Heart, Star, MapPin, Phone, Mail } from 'lucide-react';
+import { ChevronDown, Download, Eye, FileText, Leaf, Coffee, Heart, Star, MapPin, Phone, Mail } from 'lucide-react';
 import gsap from 'gsap';
 
 const HeroSection = () => {
@@ -45,48 +44,52 @@ const HeroSection = () => {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden hero-bg botanical-decoration">
       <div ref={heroRef} className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         
-        {/* Victorian-inspired Decorative Elements */}
+        {/* Bubble-inspired Decorative Elements */}
         <div className="absolute top-20 left-16 floating-element animate-gentle-float">
-          <div className="victorian-frame bg-victorian-cream border border-victorian-gold p-4 shadow-victorian glass-effect">
+          <div className="relative bg-gradient-to-br from-white/60 to-blue-100/40 backdrop-blur-md p-4 shadow-lg border border-white/30 rounded-[2rem_1rem_3rem_1.5rem] glass-effect">
+            <div className="absolute inset-0 bg-white/10 rounded-[2rem_1rem_3rem_1.5rem] pointer-events-none" />
             <div className="text-center space-y-2">
-              <div className="w-8 h-8 bg-soft-blue/20 rounded-full mx-auto flex items-center justify-center">
-                <Leaf className="w-4 h-4 text-sage flower-accent" />
+              <div className="w-8 h-8 bg-blue-200/30 rounded-full mx-auto flex items-center justify-center">
+                <Leaf className="w-4 h-4 text-teal-600" />
               </div>
-              <div className="text-xs text-victorian-navy font-inter font-medium">Psychology</div>
-              <div className="text-xs text-muted-foreground font-inter">Since 1860</div>
+              <div className="text-xs text-blue-900 font-inter font-medium">Psychology</div>
+              <div className="text-xs text-blue-600/70 font-inter">Since 1860</div>
             </div>
           </div>
         </div>
 
         <div className="absolute top-32 right-20 floating-element animate-soft-drift">
-          <div className="bg-victorian-cream/80 border border-victorian-gold/50 rounded-lg p-3 shadow-victorian glass-effect-blue">
+          <div className="relative bg-gradient-to-br from-white/60 to-blue-100/40 backdrop-blur-md p-3 shadow-lg border border-white/30 rounded-[1.5rem_2rem_1rem_3rem] glass-effect-blue">
+            <div className="absolute inset-0 bg-white/10 rounded-[1.5rem_2rem_1rem_3rem] pointer-events-none" />
             <div className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-ocean flower-accent" />
-              <div className="text-sm font-medium font-inter text-victorian-navy">Research</div>
+              <Heart className="w-4 h-4 text-teal-600" />
+              <div className="text-sm font-medium font-inter text-blue-900">Research</div>
             </div>
-            <div className="text-xs text-muted-foreground mt-1">Academic Excellence</div>
+            <div className="text-xs text-blue-600/70 mt-1">Academic Excellence</div>
           </div>
         </div>
 
         <div className="absolute bottom-24 left-12 floating-element animate-subtle-breathe">
-          <div className="victorian-frame bg-victorian-cream/90 border border-victorian-gold/60 p-4 shadow-victorian w-44">
+          <div className="relative bg-gradient-to-br from-white/60 to-blue-100/40 backdrop-blur-md p-4 shadow-lg border border-white/30 rounded-[3rem_1rem_2rem_1.5rem] w-44">
+            <div className="absolute inset-0 bg-white/10 rounded-[3rem_1rem_2rem_1.5rem] pointer-events-none" />
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-6 h-6 bg-victorian-gold/20 rounded-md flex items-center justify-center">
-                <FileText className="w-3 h-3 text-sage" />
+              <div className="w-6 h-6 bg-blue-200/30 rounded-md flex items-center justify-center">
+                <FileText className="w-3 h-3 text-teal-600" />
               </div>
-              <div className="text-sm font-medium font-inter text-victorian-navy">Academic Work</div>
+              <div className="text-sm font-medium font-inter text-blue-900">Academic Work</div>
             </div>
-            <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
-              <div className="w-4/5 h-1.5 bg-gradient-to-r from-sage to-ocean rounded-full animate-victorian-shimmer"></div>
+            <div className="w-full h-1.5 bg-blue-100/50 rounded-full overflow-hidden">
+              <div className="w-4/5 h-1.5 bg-gradient-to-r from-teal-600 to-blue-400 rounded-full animate-victorian-shimmer"></div>
             </div>
-            <div className="text-xs text-muted-foreground mt-1">Excellence Since 1860</div>
+            <div className="text-xs text-blue-600/70 mt-1">Excellence Since 1860</div>
           </div>
         </div>
 
         <div className="absolute bottom-32 right-16 floating-element animate-gentle-float">
-          <div className="bg-victorian-cream/80 border border-victorian-gold/50 rounded-lg p-3 shadow-victorian glass-effect flex items-center gap-2">
-            <Coffee className="w-4 h-4 text-ocean flower-accent" />
-            <div className="text-sm font-medium font-inter text-victorian-navy">Student Life</div>
+          <div className="relative bg-gradient-to-br from-white/60 to-blue-100/40 backdrop-blur-md p-3 shadow-lg border border-white/30 rounded-[1rem_2.5rem_1.5rem_2rem] glass-effect flex items-center gap-2">
+            <div className="absolute inset-0 bg-white/10 rounded-[1rem_2.5rem_1.5rem_2rem] pointer-events-none" />
+            <Coffee className="w-4 h-4 text-teal-600" />
+            <div className="text-sm font-medium font-inter text-blue-900">Student Life</div>
           </div>
         </div>
 
@@ -120,7 +123,7 @@ const HeroSection = () => {
                 <span className="font-inter">Ridgepoint Subdivision Brgy. Prinza Teresa, Rizal</span>
               </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center<|seperator|> gap-2">
                   <Phone className="w-4 h-4 text-ocean" />
                   <span className="font-inter">09184338959</span>
                 </div>
@@ -187,7 +190,7 @@ const HeroSection = () => {
       <div className="absolute bottom-1/4 right-8 w-40 h-40 bg-victorian-dusty-blue/20 rounded-full blur-3xl floating-element animate-gentle-float"></div>
       
       {/* Victorian pattern overlay */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
+      <div className="absolute inset-0 opacity-15 pointer-events-none">
         <div className="w-full h-full" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23113F67' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           backgroundSize: '60px 60px'
