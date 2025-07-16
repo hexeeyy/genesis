@@ -9,91 +9,91 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
-    --foreground: 210 15% 15%;
+    --background: 45 45% 97%;
+    --foreground: 205 35% 25%;
 
-    --card: 40 25% 99%;
-    --card-foreground: 210 15% 15%;
+    --card: 45 50% 98%;
+    --card-foreground: 205 35% 25%;
 
-    --popover: 40 25% 99%;
-    --popover-foreground: 210 15% 15%;
+    --popover: 45 50% 98%;
+    --popover-foreground: 205 35% 25%;
 
-    --primary: 210 25% 15%;
-    --primary-foreground: 40 20% 98%;
+    --primary: 205 50% 30%;
+    --primary-foreground: 45 45% 97%;
 
-    --secondary: 30 15% 92%;
-    --secondary-foreground: 210 15% 15%;
+    --secondary: 200 25% 88%;
+    --secondary-foreground: 205 35% 25%;
 
-    --muted: 30 10% 95%;
-    --muted-foreground: 210 10% 40%;
+    --muted: 200 20% 92%;
+    --muted-foreground: 205 20% 45%;
 
-    --accent: 40 30% 94%;
-    --accent-foreground: 210 15% 15%;
+    --accent: 45 40% 90%;
+    --accent-foreground: 205 35% 25%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 40 20% 98%;
+    --destructive-foreground: 45 45% 97%;
 
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 210 15% 15%;
+    --border: 200 25% 85%;
+    --input: 200 25% 85%;
+    --ring: 205 50% 30%;
 
     --radius: 0.375rem;
 
-    --sidebar-background: 40 20% 99%;
-    --sidebar-foreground: 210 15% 15%;
-    --sidebar-primary: 210 15% 15%;
-    --sidebar-primary-foreground: 40 20% 98%;
-    --sidebar-accent: 30 15% 94%;
-    --sidebar-accent-foreground: 210 15% 15%;
-    --sidebar-border: 30 15% 85%;
-    --sidebar-ring: 210 15% 15%;
+    --sidebar-background: 45 45% 98%;
+    --sidebar-foreground: 205 35% 25%;
+    --sidebar-primary: 205 50% 30%;
+    --sidebar-primary-foreground: 45 45% 97%;
+    --sidebar-accent: 200 25% 90%;
+    --sidebar-accent-foreground: 205 35% 25%;
+    --sidebar-border: 200 25% 82%;
+    --sidebar-ring: 205 50% 30%;
 
-    /* Custom palette colors - sophisticated, high contrast */
-    --sage: 210 25% 15%;
-    --ocean: 205 65% 45%;
-    --sky: 200 45% 70%;
-    --cream: 45 75% 85%;
-    --warm-beige: 35 25% 88%;
-    --soft-blue: 205 35% 85%;
+    /* Custom palette colors - your specified palette */
+    --sage: 205 50% 30%;        /* #113F67 -> Deep Blue */
+    --ocean: 205 49% 40%;       /* #34699A -> Medium Blue */
+    --sky: 200 50% 65%;         /* #58A0C8 -> Light Blue */
+    --cream: 54 89% 84%;        /* #FDF5AA -> Cream Yellow */
+    --warm-beige: 45 35% 88%;
+    --soft-blue: 200 45% 85%;
   }
 
   .dark {
-    --background: 210 15% 8%;
-    --foreground: 40 20% 95%;
+    --background: 205 35% 8%;
+    --foreground: 45 45% 95%;
 
-    --card: 210 15% 10%;
-    --card-foreground: 40 20% 95%;
+    --card: 205 35% 10%;
+    --card-foreground: 45 45% 95%;
 
-    --popover: 210 15% 10%;
-    --popover-foreground: 40 20% 95%;
+    --popover: 205 35% 10%;
+    --popover-foreground: 45 45% 95%;
 
-    --primary: 40 20% 95%;
-    --primary-foreground: 210 15% 8%;
+    --primary: 45 45% 95%;
+    --primary-foreground: 205 35% 8%;
 
-    --secondary: 210 15% 20%;
-    --secondary-foreground: 40 20% 95%;
+    --secondary: 205 35% 20%;
+    --secondary-foreground: 45 45% 95%;
 
-    --muted: 210 15% 15%;
-    --muted-foreground: 40 15% 65%;
+    --muted: 205 35% 15%;
+    --muted-foreground: 45 25% 65%;
 
-    --accent: 210 15% 15%;
-    --accent-foreground: 40 20% 95%;
+    --accent: 205 35% 15%;
+    --accent-foreground: 45 45% 95%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 40 20% 95%;
+    --destructive-foreground: 45 45% 95%;
 
-    --border: 210 15% 20%;
-    --input: 210 15% 20%;
-    --ring: 40 20% 95%;
+    --border: 205 35% 20%;
+    --input: 205 35% 20%;
+    --ring: 45 45% 95%;
 
-    --sidebar-background: 210 15% 5%;
-    --sidebar-foreground: 40 20% 90%;
-    --sidebar-primary: 40 20% 95%;
-    --sidebar-primary-foreground: 210 15% 8%;
-    --sidebar-accent: 210 15% 12%;
-    --sidebar-accent-foreground: 40 20% 90%;
-    --sidebar-border: 210 15% 12%;
-    --sidebar-ring: 40 20% 95%;
+    --sidebar-background: 205 35% 5%;
+    --sidebar-foreground: 45 45% 90%;
+    --sidebar-primary: 45 45% 95%;
+    --sidebar-primary-foreground: 205 35% 8%;
+    --sidebar-accent: 205 35% 12%;
+    --sidebar-accent-foreground: 45 45% 90%;
+    --sidebar-border: 205 35% 12%;
+    --sidebar-ring: 45 45% 95%;
   }
 }
 
@@ -127,32 +127,36 @@ All colors MUST be HSL.
   background: hsl(var(--primary));
 }
 
-/* Elegant gradient backgrounds */
+/* Enhanced gradient backgrounds with your color palette */
 .gradient-primary {
-  background: linear-gradient(135deg, hsl(var(--sage)) 0%, hsl(var(--ocean)) 100%);
+  background: linear-gradient(135deg, hsl(var(--sage)) 0%, hsl(var(--ocean)) 50%, hsl(var(--sky)) 100%);
 }
 
 .gradient-soft {
   background: linear-gradient(135deg, hsl(var(--cream)) 0%, hsl(var(--soft-blue)) 100%);
 }
 
+.gradient-accent {
+  background: linear-gradient(135deg, hsl(var(--sky)) 0%, hsl(var(--cream)) 100%);
+}
+
 .text-gradient {
-  background: linear-gradient(135deg, hsl(var(--sage)) 0%, hsl(var(--ocean)) 100%);
+  background: linear-gradient(135deg, hsl(var(--sage)) 0%, hsl(var(--ocean)) 50%, hsl(var(--sky)) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Minimal paper texture */
+/* Enhanced paper texture with better contrast */
 .paper-texture {
   background-color: hsl(var(--background));
   background-image: 
     radial-gradient(circle at 25% 25%, hsl(var(--muted)) 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, hsl(var(--muted)) 1px, transparent 1px);
+    radial-gradient(circle at 75% 75%, hsl(var(--sky) / 0.1) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-/* Organic shapes */
+/* Organic shapes with better visual appeal */
 .organic-shape {
   border-radius: 45% 55% 65% 35% / 35% 45% 55% 65%;
 }
@@ -161,7 +165,7 @@ All colors MUST be HSL.
   border-radius: 65% 35% 45% 55% / 55% 65% 35% 45%;
 }
 
-/* Subtle animations */
+/* Improved animations */
 @keyframes gentle-float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
@@ -211,36 +215,85 @@ All colors MUST be HSL.
   text-wrap: balance;
 }
 
-/* Glass effect */
+/* Enhanced glass effect with better contrast */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Enhanced shadows for better contrast */
+/* Improved shadows for better contrast */
 .shadow-soft {
-  box-shadow: 0 2px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 25px -5px rgba(17, 63, 103, 0.12);
 }
 
 .shadow-medium {
-  box-shadow: 0 4px 35px -5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 35px -5px rgba(17, 63, 103, 0.18);
 }
 
 .shadow-strong {
-  box-shadow: 0 8px 45px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 45px -5px rgba(17, 63, 103, 0.25);
 }
 
-/* Decorative elements */
+/* Enhanced decorative elements with your color palette */
 .silk-texture {
   background: linear-gradient(45deg, 
     hsl(var(--cream)) 0%, 
-    hsl(var(--warm-beige)) 25%,
-    hsl(var(--soft-blue)) 75%,
-    hsl(var(--sky)) 100%
+    hsl(var(--sky) / 0.8) 25%,
+    hsl(var(--ocean) / 0.6) 75%,
+    hsl(var(--sage) / 0.4) 100%
   );
 }
 
 .flower-accent {
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 2px 8px rgba(17, 63, 103, 0.15));
+}
+
+/* Color-specific utility classes */
+.text-sage {
+  color: hsl(var(--sage));
+}
+
+.text-ocean {
+  color: hsl(var(--ocean));
+}
+
+.text-sky {
+  color: hsl(var(--sky));
+}
+
+.text-cream {
+  color: hsl(var(--cream));
+}
+
+.bg-sage {
+  background-color: hsl(var(--sage));
+}
+
+.bg-ocean {
+  background-color: hsl(var(--ocean));
+}
+
+.bg-sky {
+  background-color: hsl(var(--sky));
+}
+
+.bg-cream {
+  background-color: hsl(var(--cream));
+}
+
+/* Hover effects with improved contrast */
+.hover-sage:hover {
+  background-color: hsl(var(--sage));
+  color: hsl(var(--cream));
+}
+
+.hover-ocean:hover {
+  background-color: hsl(var(--ocean));
+  color: white;
+}
+
+.hover-sky:hover {
+  background-color: hsl(var(--sky));
+  color: hsl(var(--sage));
 }

@@ -72,7 +72,9 @@ export default {
 					sage: 'hsl(var(--sage))',
 					ocean: 'hsl(var(--ocean))',
 					sky: 'hsl(var(--sky))',
-					cream: 'hsl(var(--cream))'
+					cream: 'hsl(var(--cream))',
+					'warm-beige': 'hsl(var(--warm-beige))',
+					'soft-blue': 'hsl(var(--soft-blue))'
 				}
 			},
 			borderRadius: {
@@ -159,6 +161,14 @@ export default {
 					'100%': {
 						backgroundPosition: '200% center'
 					}
+				},
+				'glow': {
+					'0%, 100%': {
+						boxShadow: '0 0 20px rgba(88, 160, 200, 0.3)'
+					},
+					'50%': {
+						boxShadow: '0 0 30px rgba(88, 160, 200, 0.6)'
+					}
 				}
 			},
 			animation: {
@@ -169,7 +179,8 @@ export default {
 				'float-gentle': 'float-gentle 6s ease-in-out infinite',
 				'drift': 'drift 8s ease-in-out infinite',
 				'breathe': 'breathe 4s ease-in-out infinite',
-				'shimmer': 'shimmer 2s linear infinite'
+				'shimmer': 'shimmer 2s linear infinite',
+				'glow': 'glow 3s ease-in-out infinite'
 			}
 		}
 	},
