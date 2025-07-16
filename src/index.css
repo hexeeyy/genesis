@@ -48,13 +48,20 @@ All colors MUST be HSL.
     --sidebar-border: 200 25% 82%;
     --sidebar-ring: 205 50% 30%;
 
-    /* Custom palette colors - your specified palette */
-    --sage: 205 50% 30%;        /* #113F67 -> Deep Blue */
+    /* Enhanced palette colors with your specified palette */
+    --sage: 205 60% 20%;        /* #113F67 -> Deep Blue (darker) */
     --ocean: 205 49% 40%;       /* #34699A -> Medium Blue */
     --sky: 200 50% 65%;         /* #58A0C8 -> Light Blue */
     --cream: 54 89% 84%;        /* #FDF5AA -> Cream Yellow */
-    --warm-beige: 45 35% 88%;
-    --soft-blue: 200 45% 85%;
+    --warm-beige: 45 35% 92%;   /* Lighter warm beige */
+    --soft-blue: 200 45% 90%;   /* Very soft blue */
+    
+    /* 1860s Victorian-inspired colors */
+    --victorian-navy: 220 40% 15%;
+    --victorian-gold: 45 85% 75%;
+    --victorian-sage: 130 25% 35%;
+    --victorian-cream: 40 30% 95%;
+    --victorian-dusty-blue: 200 30% 70%;
   }
 
   .dark {
@@ -127,7 +134,7 @@ All colors MUST be HSL.
   background: hsl(var(--primary));
 }
 
-/* Enhanced gradient backgrounds with your color palette */
+/* Enhanced gradient backgrounds with elegant color divisions */
 .gradient-primary {
   background: linear-gradient(135deg, hsl(var(--sage)) 0%, hsl(var(--ocean)) 50%, hsl(var(--sky)) 100%);
 }
@@ -140,6 +147,20 @@ All colors MUST be HSL.
   background: linear-gradient(135deg, hsl(var(--sky)) 0%, hsl(var(--cream)) 100%);
 }
 
+.gradient-victorian {
+  background: linear-gradient(135deg, hsl(var(--victorian-cream)) 0%, hsl(var(--victorian-dusty-blue)) 50%, hsl(var(--victorian-navy)) 100%);
+}
+
+.gradient-elegant {
+  background: linear-gradient(
+    135deg, 
+    hsl(var(--warm-beige)) 0%, 
+    hsl(var(--cream) / 0.8) 25%,
+    hsl(var(--soft-blue) / 0.6) 75%,
+    hsl(var(--sky) / 0.4) 100%
+  );
+}
+
 .text-gradient {
   background: linear-gradient(135deg, hsl(var(--sage)) 0%, hsl(var(--ocean)) 50%, hsl(var(--sky)) 100%);
   -webkit-background-clip: text;
@@ -147,16 +168,90 @@ All colors MUST be HSL.
   background-clip: text;
 }
 
-/* Enhanced paper texture with better contrast */
+/* Victorian-inspired paper textures for different sections */
 .paper-texture {
-  background-color: hsl(var(--background));
+  background-color: hsl(var(--victorian-cream));
   background-image: 
-    radial-gradient(circle at 25% 25%, hsl(var(--muted)) 1px, transparent 1px),
+    radial-gradient(circle at 25% 25%, hsl(var(--muted) / 0.3) 1px, transparent 1px),
     radial-gradient(circle at 75% 75%, hsl(var(--sky) / 0.1) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
-/* Organic shapes with better visual appeal */
+.paper-texture-blue {
+  background: linear-gradient(135deg, hsl(var(--soft-blue)) 0%, hsl(var(--victorian-cream)) 100%);
+  background-image: 
+    radial-gradient(circle at 20% 80%, hsl(var(--ocean) / 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 80% 20%, hsl(var(--sage) / 0.05) 1px, transparent 1px);
+  background-size: 80px 80px, 40px 40px;
+}
+
+.paper-texture-cream {
+  background: linear-gradient(135deg, hsl(var(--cream)) 0%, hsl(var(--warm-beige)) 100%);
+  background-image: 
+    radial-gradient(circle at 30% 40%, hsl(var(--victorian-gold) / 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 70% 70%, hsl(var(--ocean) / 0.05) 1px, transparent 1px);
+  background-size: 90px 90px, 45px 45px;
+}
+
+.paper-texture-sage {
+  background: linear-gradient(135deg, hsl(var(--sage) / 0.05) 0%, hsl(var(--victorian-cream)) 50%, hsl(var(--soft-blue) / 0.1) 100%);
+  background-image: 
+    radial-gradient(circle at 40% 60%, hsl(var(--victorian-sage) / 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 30%, hsl(var(--ocean) / 0.08) 1px, transparent 1px);
+  background-size: 70px 70px, 35px 35px;
+}
+
+/* 1860s Victorian decorative elements */
+.victorian-border {
+  border-image: linear-gradient(
+    45deg,
+    hsl(var(--victorian-gold)),
+    hsl(var(--victorian-navy)),
+    hsl(var(--victorian-gold))
+  ) 1;
+}
+
+.victorian-ornament::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--victorian-gold)),
+    hsl(var(--victorian-navy)),
+    hsl(var(--victorian-gold)),
+    transparent
+  );
+}
+
+.victorian-frame {
+  position: relative;
+  padding: 2rem;
+  background: hsl(var(--victorian-cream));
+  border: 2px solid hsl(var(--victorian-gold));
+  box-shadow: 
+    inset 0 0 0 4px hsl(var(--victorian-cream)),
+    inset 0 0 0 6px hsl(var(--victorian-navy) / 0.2),
+    0 8px 32px hsl(var(--victorian-navy) / 0.1);
+}
+
+.victorian-frame::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid hsl(var(--victorian-gold) / 0.5);
+  pointer-events: none;
+}
+
+/* Organic shapes with improved visual appeal */
 .organic-shape {
   border-radius: 45% 55% 65% 35% / 35% 45% 55% 65%;
 }
@@ -165,32 +260,64 @@ All colors MUST be HSL.
   border-radius: 65% 35% 45% 55% / 55% 65% 35% 45%;
 }
 
-/* Improved animations */
+/* Victorian-inspired botanical decorations */
+.botanical-decoration {
+  position: relative;
+}
+
+.botanical-decoration::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23113F67' stroke-width='0.5' opacity='0.1'%3E%3Cpath d='M30 10c10 0 18 8 18 18s-8 18-18 18-18-8-18-18 8-18 18-18z'/%3E%3Cpath d='M30 15c7 0 13 6 13 13s-6 13-13 13-13-6-13-13 6-13 13-13z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 60px 60px;
+  background-repeat: repeat;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Enhanced animations */
 @keyframes gentle-float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-6px) rotate(1deg); }
+  66% { transform: translateY(-2px) rotate(-0.5deg); }
 }
 
 @keyframes soft-drift {
-  0%, 100% { transform: translate(0px, 0px); }
-  50% { transform: translate(6px, -6px); }
+  0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
+  25% { transform: translate(4px, -4px) rotate(1deg); }
+  50% { transform: translate(-2px, 2px) rotate(-0.5deg); }
+  75% { transform: translate(2px, -6px) rotate(0.5deg); }
 }
 
 @keyframes subtle-breathe {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes victorian-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .animate-gentle-float {
-  animation: gentle-float 8s ease-in-out infinite;
+  animation: gentle-float 12s ease-in-out infinite;
 }
 
 .animate-soft-drift {
-  animation: soft-drift 12s ease-in-out infinite;
+  animation: soft-drift 16s ease-in-out infinite;
 }
 
 .animate-subtle-breathe {
-  animation: subtle-breathe 6s ease-in-out infinite;
+  animation: subtle-breathe 8s ease-in-out infinite;
+}
+
+.animate-victorian-shimmer {
+  animation: victorian-shimmer 3s linear infinite;
 }
 
 /* Typography enhancements */
@@ -215,33 +342,46 @@ All colors MUST be HSL.
   text-wrap: balance;
 }
 
-/* Enhanced glass effect with better contrast */
+/* Enhanced glass effect with Victorian touch */
 .glass-effect {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(253, 245, 170, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(52, 105, 154, 0.2);
+  box-shadow: 0 8px 32px rgba(17, 63, 103, 0.1);
+}
+
+.glass-effect-blue {
+  background: rgba(88, 160, 200, 0.1);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(17, 63, 103, 0.15);
 }
 
 /* Improved shadows for better contrast */
 .shadow-soft {
-  box-shadow: 0 2px 25px -5px rgba(17, 63, 103, 0.12);
+  box-shadow: 0 4px 20px -2px rgba(17, 63, 103, 0.08);
 }
 
 .shadow-medium {
-  box-shadow: 0 4px 35px -5px rgba(17, 63, 103, 0.18);
+  box-shadow: 0 8px 30px -4px rgba(17, 63, 103, 0.12);
 }
 
 .shadow-strong {
-  box-shadow: 0 8px 45px -5px rgba(17, 63, 103, 0.25);
+  box-shadow: 0 12px 40px -4px rgba(17, 63, 103, 0.18);
 }
 
-/* Enhanced decorative elements with your color palette */
+.shadow-victorian {
+  box-shadow: 
+    0 4px 20px rgba(17, 63, 103, 0.1),
+    inset 0 1px 0 rgba(253, 245, 170, 0.2);
+}
+
+/* Enhanced decorative elements with Victorian flair */
 .silk-texture {
-  background: linear-gradient(45deg, 
+  background: linear-gradient(135deg, 
     hsl(var(--cream)) 0%, 
-    hsl(var(--sky) / 0.8) 25%,
-    hsl(var(--ocean) / 0.6) 75%,
-    hsl(var(--sage) / 0.4) 100%
+    hsl(var(--victorian-dusty-blue) / 0.3) 25%,
+    hsl(var(--ocean) / 0.2) 75%,
+    hsl(var(--sage) / 0.1) 100%
   );
 }
 
@@ -266,6 +406,14 @@ All colors MUST be HSL.
   color: hsl(var(--cream));
 }
 
+.text-victorian-navy {
+  color: hsl(var(--victorian-navy));
+}
+
+.text-victorian-gold {
+  color: hsl(var(--victorian-gold));
+}
+
 .bg-sage {
   background-color: hsl(var(--sage));
 }
@@ -282,6 +430,14 @@ All colors MUST be HSL.
   background-color: hsl(var(--cream));
 }
 
+.bg-victorian-cream {
+  background-color: hsl(var(--victorian-cream));
+}
+
+.bg-victorian-gold {
+  background-color: hsl(var(--victorian-gold));
+}
+
 /* Hover effects with improved contrast */
 .hover-sage:hover {
   background-color: hsl(var(--sage));
@@ -296,4 +452,74 @@ All colors MUST be HSL.
 .hover-sky:hover {
   background-color: hsl(var(--sky));
   color: hsl(var(--sage));
+}
+
+.hover-victorian:hover {
+  background-color: hsl(var(--victorian-gold));
+  color: hsl(var(--victorian-navy));
+}
+
+/* Section-specific background classes */
+.hero-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--victorian-cream)) 0%, 
+    hsl(var(--soft-blue) / 0.3) 50%,
+    hsl(var(--cream) / 0.8) 100%
+  );
+}
+
+.about-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--cream) / 0.4) 0%, 
+    hsl(var(--victorian-cream)) 50%,
+    hsl(var(--warm-beige)) 100%
+  );
+}
+
+.education-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--soft-blue) / 0.2) 0%, 
+    hsl(var(--victorian-dusty-blue) / 0.3) 50%,
+    hsl(var(--victorian-cream)) 100%
+  );
+}
+
+.experience-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--victorian-cream)) 0%, 
+    hsl(var(--cream) / 0.6) 50%,
+    hsl(var(--victorian-gold) / 0.1) 100%
+  );
+}
+
+.skills-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--sage) / 0.05) 0%, 
+    hsl(var(--victorian-cream)) 50%,
+    hsl(var(--soft-blue) / 0.2) 100%
+  );
+}
+
+.projects-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--ocean) / 0.08) 0%, 
+    hsl(var(--victorian-cream)) 50%,
+    hsl(var(--cream) / 0.4) 100%
+  );
+}
+
+.gallery-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--warm-beige)) 0%, 
+    hsl(var(--victorian-cream)) 50%,
+    hsl(var(--sky) / 0.1) 100%
+  );
+}
+
+.contact-bg {
+  background: linear-gradient(135deg, 
+    hsl(var(--victorian-dusty-blue) / 0.2) 0%, 
+    hsl(var(--cream) / 0.5) 50%,
+    hsl(var(--victorian-cream)) 100%
+  );
 }
