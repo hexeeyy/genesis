@@ -7,9 +7,11 @@
       "default",
       {
         "ignore": [
-          "backdrop-filter"
+          "backdrop-filter",
+          "text-wrap"
         ]
       }
-    ]
+    ],
+    "no-inline-styles": "off"
   }
 }
