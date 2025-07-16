@@ -15,16 +15,6 @@ const HeroSection = () => {
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power2.out" }
     );
-
-    // Subtle floating animation
-    gsap.to(".floating-element", {
-      y: -6,
-      duration: 8,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-      stagger: 0.5
-    });
   }, []);
 
   const handleViewWork = () => {
@@ -44,56 +34,6 @@ const HeroSection = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden hero-bg botanical-decoration">
       <div ref={heroRef} className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        
-        {/* Bubble-inspired Decorative Elements */}
-        <div className="absolute top-20 left-16 floating-element animate-gentle-float">
-          <div className="relative bg-gradient-to-br from-white/60 to-blue-100/40 backdrop-blur-md p-4 shadow-lg border border-white/30 rounded-[2rem_1rem_3rem_1.5rem] glass-effect">
-            <div className="absolute inset-0 bg-white/10 rounded-[2rem_1rem_3rem_1.5rem] pointer-events-none" />
-            <div className="text-center space-y-2">
-              <div className="w-8 h-8 bg-blue-200/30 rounded-full mx-auto flex items-center justify-center">
-                <Leaf className="w-4 h-4 text-teal-600" />
-              </div>
-              <div className="text-xs text-blue-900 font-inter font-medium">Psychology</div>
-              <div className="text-xs text-blue-600/70 font-inter">Since 1860</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute top-32 right-20 floating-element animate-soft-drift">
-          <div className="relative bg-gradient-to-br from-white/60 to-blue-100/40 backdrop-blur-md p-3 shadow-lg border border-white/30 rounded-[1.5rem_2rem_1rem_3rem] glass-effect-blue">
-            <div className="absolute inset-0 bg-white/10 rounded-[1.5rem_2rem_1rem_3rem] pointer-events-none" />
-            <div className="flex items-center gap-2">
-              <Heart className="w-4 h-4 text-teal-600" />
-              <div className="text-sm font-medium font-inter text-blue-900">Research</div>
-            </div>
-            <div className="text-xs text-blue-600/70 mt-1">Academic Excellence</div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-24 left-12 floating-element animate-subtle-breathe">
-          <div className="relative bg-gradient-to-br from-white/60 to-blue-100/40 backdrop-blur-md p-4 shadow-lg border border-white/30 rounded-[3rem_1rem_2rem_1.5rem] w-44">
-            <div className="absolute inset-0 bg-white/10 rounded-[3rem_1rem_2rem_1.5rem] pointer-events-none" />
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-6 h-6 bg-blue-200/30 rounded-md flex items-center justify-center">
-                <FileText className="w-3 h-3 text-teal-600" />
-              </div>
-              <div className="text-sm font-medium font-inter text-blue-900">Academic Work</div>
-            </div>
-            <div className="w-full h-1.5 bg-blue-100/50 rounded-full overflow-hidden">
-              <div className="w-4/5 h-1.5 bg-gradient-to-r from-teal-600 to-blue-400 rounded-full animate-victorian-shimmer"></div>
-            </div>
-            <div className="text-xs text-blue-600/70 mt-1">Excellence Since 1860</div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-32 right-16 floating-element animate-gentle-float">
-          <div className="relative bg-gradient-to-br from-white/60 to-blue-100/40 backdrop-blur-md p-3 shadow-lg border border-white/30 rounded-[1rem_2.5rem_1.5rem_2rem] glass-effect flex items-center gap-2">
-            <div className="absolute inset-0 bg-white/10 rounded-[1rem_2.5rem_1.5rem_2rem] pointer-events-none" />
-            <Coffee className="w-4 h-4 text-teal-600" />
-            <div className="text-sm font-medium font-inter text-blue-900">Student Life</div>
-          </div>
-        </div>
-
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -112,29 +52,9 @@ const HeroSection = () => {
               </h1>
               <h2 className="text-lg md:text-xl font-light text-muted-foreground max-w-lg font-inter leading-relaxed">
                 Understanding the human mind through 
-                <span className="text-ocean font-medium"> evidence-based research</span><br/>
-                at National University - Manila
+                <span className="text-ocean font-medium"> evidence-based research</span><br/>at National University - Manila
               </h2>
             </div>
-
-            {/* Contact Info */}
-            <div className="victorian-frame bg-victorian-cream/50 backdrop-blur-sm border border-victorian-gold/30 p-4 space-y-2 shadow-victorian">
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 text-ocean" />
-                <span className="font-inter">Ridgepoint Subdivision Brgy. Prinza Teresa, Rizal</span>
-              </div>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-ocean" />
-                  <span className="font-inter">09184338959</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-ocean" />
-                  <span className="font-inter">genclerence.martin@gmail.com</span>
-                </div>
-              </div>
-            </div>
-            
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button 
                 onClick={handleViewWork}

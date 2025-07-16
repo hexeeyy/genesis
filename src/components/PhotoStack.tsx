@@ -64,7 +64,7 @@ const PhotoStack = () => {
     <div className="relative flex justify-center lg:justify-end w-full h-full">
       <div className="w-full max-w-sm">
           <div
-          className="relative aspect-[3/4] bg-transparent rounded-lg flex items-center justify-center overflow-hidden shadow-lg bg-cover bg-center animate-subtle-breathe"
+          className="relative aspect-[3/4] bg-transparent rounded-lg flex items-center justify-center overflow-hidden shadow-lg bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundImage})` }}
           >
           {photos.map((photo, i) => {

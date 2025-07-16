@@ -300,8 +300,8 @@ All colors MUST be HSL.
 }
 
 @keyframes victorian-shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
 }
 
 .animate-gentle-float {
@@ -317,6 +317,8 @@ All colors MUST be HSL.
 }
 
 .animate-victorian-shimmer {
+  background: linear-gradient(90deg, #0d9488, #3b82f6, #0d9488);
+  background-size: 200% 100%;
   animation: victorian-shimmer 3s linear infinite;
 }
 
