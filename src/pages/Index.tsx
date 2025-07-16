@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import HeroSection from '../components/HeroSection';
@@ -8,6 +7,9 @@ import ProjectsSection from '../components/ProjectsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import gsap from 'gsap';
+import GallerySection from '../components/GallerySection';
+import EducationSection from '../components/EducationSection';
+import ExperienceSection from '../components/ExperienceSection';
 
 const Index = () => {
   useEffect(() => {
@@ -36,8 +38,11 @@ const Index = () => {
       <Navigation />
       <HeroSection />
       <AboutSection />
+      <EducationSection />
+      <ExperienceSection />
       <SkillsSection />
       <ProjectsSection />
+      <GallerySection />
       <ContactSection />
       <Footer />
     </div>

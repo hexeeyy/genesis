@@ -25,8 +25,11 @@ const Navigation = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
+    { name: 'Education', href: '#education' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Gallery', href: '#gallery' },
     { name: 'Contact', href: '#contact' }
   ];
 
@@ -40,7 +43,7 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      scrolled ? 'bg-card/95 backdrop-blur-xl border-b border-border shadow-xl' : 'bg-transparent'
+      scrolled ? 'bg-card/95 backdrop-blur-xl border-b border-border shadow-strong' : 'bg-transparent'
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -56,10 +59,10 @@ const Navigation = () => {
               <button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className="nav-item text-muted-foreground hover:text-primary transition-all duration-300 font-medium relative group font-inter"
+                className="nav-item text-muted-foreground hover:text-ocean transition-all duration-300 font-medium relative group font-inter"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-ocean transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
@@ -68,7 +71,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform"
+              className="text-foreground hover:text-ocean transition-colors duration-300 hover:scale-110 transform"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -83,7 +86,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
-                  className="block w-full text-left px-3 py-2 text-muted-foreground hover:text-primary transition-colors duration-300 font-medium font-inter"
+                  className="block w-full text-left px-3 py-2 text-muted-foreground hover:text-ocean transition-colors duration-300 font-medium font-inter"
                 >
                   {item.name}
                 </button>

@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { BookOpen, Heart, Users, Target } from 'lucide-react';
+import { BookOpen, Heart, Users, Target, Award, MessageCircle, Users2, Lightbulb } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -28,31 +28,26 @@ const AboutSection = () => {
     );
   }, []);
 
-  const highlights = [
+  const skills = [
     {
-      icon: BookOpen,
-      title: "Academic Excellence",
-      description: "Maintaining high academic standards while exploring various branches of psychology at National University - Manila"
+      icon: MessageCircle,
+      title: "Communication",
+      description: "Effective verbal and written communication, strong interpersonal and presentation skills, active listening and persuasive communication"
     },
     {
-      icon: Heart,
-      title: "Empathetic Approach",
-      description: "Committed to understanding human behavior through compassion and evidence-based research methodologies"
+      icon: Lightbulb,
+      title: "Problem-Solving",
+      description: "Critical thinking, analytical skills, creative solutions"
     },
     {
-      icon: Users,
-      title: "Community Focus",
-      description: "Dedicated to applying psychological principles to improve mental health outcomes in our community"
-    },
-    {
-      icon: Target,
-      title: "Research Goals",
-      description: "Aspiring to contribute meaningful research in cognitive psychology and therapeutic interventions"
+      icon: Users2,
+      title: "Collaboration",
+      description: "Teamwork, leadership, proven ability to build consensus and resolve conflicts"
     }
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-card">
+    <section id="about" ref={sectionRef} className="py-20 bg-background">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div ref={contentRef} className="space-y-16">
           
@@ -61,63 +56,84 @@ const AboutSection = () => {
             <h2 className="text-4xl md:text-5xl font-light text-foreground font-display">
               About Me
             </h2>
-            <div className="w-12 h-px bg-sage mx-auto"></div>
+            <div className="w-12 h-px bg-ocean mx-auto"></div>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-inter font-light leading-relaxed">
-              A passionate psychology student dedicated to understanding the complexities 
-              of human behavior and mental processes through research and compassionate practice.
+              A dedicated psychology student with a passion for understanding human behavior 
+              and making a positive impact through research and community service.
             </p>
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             
-            {/* Left Column - Text */}
+            {/* Left Column - About Text */}
             <div className="space-y-6">
               <h3 className="text-2xl font-light text-foreground font-display">
                 My Journey in Psychology
               </h3>
               <div className="space-y-4 text-muted-foreground font-inter leading-relaxed">
                 <p>
-                  Currently pursuing my degree in Psychology at National University - Manila, 
-                  I am deeply fascinated by the intricate workings of the human mind and the 
-                  factors that influence behavior, cognition, and emotional well-being.
+                  Currently pursuing my Bachelor of Science in Psychology at National University - Manila, 
+                  with an expected graduation in May 2026. As a First Honor Dean's Lister, I am deeply 
+                  committed to academic excellence and understanding the complexities of human behavior.
                 </p>
                 <p>
-                  My academic journey has exposed me to various psychological theories and 
-                  research methodologies, from cognitive behavioral approaches to 
-                  developmental psychology. I am particularly interested in understanding 
-                  how psychological principles can be applied to improve mental health 
-                  outcomes and enhance quality of life.
+                  My educational journey began with consistent academic achievement, from being a Top 5 
+                  achiever in elementary school to graduating with honors from the University of Rizal 
+                  System Morong in Humanities and Social Sciences.
                 </p>
                 <p>
-                  Through coursework, research projects, and practical experiences, I am 
-                  building a foundation that will enable me to contribute meaningfully 
-                  to the field of psychology and make a positive impact on individuals 
-                  and communities.
+                  Beyond academics, I have gained valuable experience in event planning and community 
+                  service, successfully coordinating major events and leading teams to create positive 
+                  impact in our community.
+                </p>
+              </div>
+
+              {/* Education Highlight */}
+              <div className="bg-card border border-border rounded-lg p-6 shadow-soft">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-soft-blue/20 rounded-md flex items-center justify-center">
+                    <Award className="w-5 h-5 text-ocean" />
+                  </div>
+                  <h4 className="text-lg font-medium text-foreground font-inter">
+                    Academic Excellence
+                  </h4>
+                </div>
+                <p className="text-sm text-muted-foreground font-inter leading-relaxed">
+                  First Honor Dean's Lister (August 2022 - July 2023) at National University - Manila, 
+                  maintaining high academic standards while actively participating in community service.
                 </p>
               </div>
             </div>
 
-            {/* Right Column - Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {highlights.map((item, index) => (
-                <div 
-                  key={index}
-                  className="bg-background border border-border p-6 rounded-sm shadow-soft hover:shadow-medium transition-all duration-300"
-                >
-                  <div className="space-y-3">
-                    <div className="w-10 h-10 bg-accent rounded-sm flex items-center justify-center">
-                      <item.icon className="w-5 h-5 text-sage" />
+            {/* Right Column - Skills & Interests */}
+            <div className="space-y-8">
+              <h3 className="text-2xl font-light text-foreground font-display">
+                Skills & Interests
+              </h3>
+              
+              <div className="space-y-6">
+                {skills.map((skill, index) => (
+                  <div 
+                    key={index}
+                    className="bg-card border border-border p-6 rounded-lg shadow-soft hover:shadow-medium transition-all duration-300"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-soft-blue/20 rounded-md flex items-center justify-center">
+                          <skill.icon className="w-4 h-4 text-ocean" />
+                        </div>
+                        <h4 className="text-lg font-medium text-foreground font-inter">
+                          {skill.title}
+                        </h4>
+                      </div>
+                      <p className="text-sm text-muted-foreground font-inter leading-relaxed">
+                        {skill.description}
+                      </p>
                     </div>
-                    <h4 className="text-lg font-medium text-foreground font-inter">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground font-inter leading-relaxed">
-                      {item.description}
-                    </p>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
