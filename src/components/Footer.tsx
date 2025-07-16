@@ -1,53 +1,30 @@
 
-import { Heart, Github, Linkedin, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 const Footer = () => {
-  const socialLinks = [
-    { 
-      icon: Instagram, 
-      href: "https://instagram.com/genesis.palero", 
-      label: "Instagram" 
-    },
-    { 
-      icon: Facebook, 
-      href: "https://facebook.com/genesis.palero.martin", 
-      label: "Facebook" 
-    },
-    { 
-      icon: MessageCircle, 
-      href: "https://m.me/genesis.palero.martin", 
-      label: "Messenger" 
-    },
-    { 
-      icon: Mail, 
-      href: "mailto:genesis.palero@nu-manila.edu.ph", 
-      label: "Email" 
-    }
-  ];
-
   return (
-    <footer className="bg-gradient-to-r from-muted/30 via-accent/10 to-primary/5 border-t border-border">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0 text-center md:text-left">
-            <div className="text-2xl font-bold text-foreground mb-2 font-poppins">心理学</div>
-            <p className="text-muted-foreground font-inter">Understanding minds, changing lives</p>
-            <p className="text-sm text-muted-foreground mt-1 font-inter">Genesis Clerence Palero Martin</p>
+    <footer className="py-12 bg-card border-t border-border">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="text-center space-y-4">
+          <div className="flex items-center justify-center gap-2 text-muted-foreground">
+            <span className="font-inter text-sm">Made with</span>
+            <Heart className="w-4 h-4 text-sage fill-current" />
+            <span className="font-inter text-sm">by Genesis Martin</span>
           </div>
-
-          <div className="flex space-x-4">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="p-3 bg-background border border-border rounded-full hover:bg-primary hover:text-primary-foreground text-muted-foreground transition-all duration-300 hover:scale-110 transform hover:shadow-lg"
-              >
-                <social.icon className="w-5 h-5" />
-              </a>
-            ))}
+          
+          <div className="space-y-2">
+            <p className="text-lg font-medium text-foreground font-display">
+              Genesis Clerence Palero Martin
+            </p>
+            <p className="text-sm text-muted-foreground font-inter">
+              Psychology Student • National University - Manila
+            </p>
+          </div>
+          
+          <div className="pt-4 border-t border-border">
+            <p className="text-xs text-muted-foreground font-inter">
+              © 2024 Genesis Martin. All rights reserved.
+            </p>
           </div>
         </div>
       </div>
