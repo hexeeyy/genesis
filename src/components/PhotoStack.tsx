@@ -64,26 +64,25 @@ const PhotoStack = () => {
     <div className="relative flex justify-center lg:justify-end w-full h-full">
       <div className="w-full max-w-sm">
           <div
-          className="relative aspect-[3/4] bg-transparent rounded-lg flex items-center justify-center overflow-hidden shadow-lg bg-cover bg-center"
+          className="relative aspect-[3/4] bg-transparent rounded-lg flex items-center justify-center overflow-hidden shadow-lg bg-cover bg-center animate-subtle-breathe"
           style={{ backgroundImage: `url(${backgroundImage})` }}
           >
           {photos.map((photo, i) => {
               const isTop = i === currentIndex;
 
               return (
-              <img
-                key={photo}
-                ref={(el) => (photoRefs.current[i] = el)}
-                src={photo}
-                alt={`Photo ${i + 1}`}
-                className={`absolute object-cover mt-[-30px] rounded-md shadow-md transition-all duration-700 ease-in-out
-                w-[80%] h-[80%] sm:w-[65%] sm:h-[65%]
-                ${isTop ? 'z-50 opacity-100 scale-100 cursor-pointer hover:ring-4 hover:ring-amber-600 hover:ring-offset-2' : 'z-40 opacity-60 scale-95'}
-                `}
-                style={{
-                transform: `translateX(${(i - currentIndex) * 5}px) rotate(${(i - currentIndex) * 2}deg)`,
-                }}
-                onClick={isTop ? handleNextPhoto : undefined}
+            <img
+              key={photo}
+              ref={(el) => (photoRefs.current[i] = el)}
+              src={photo}
+              alt={`Photo ${i + 1}`}
+              className={`absolute object-cover mt-[-30px] rounded-md transition-all duration-700 ease-in-out w-[80%] h-[80%] sm:w-[65%] sm:h-[65%] backdrop-blur-sm border-1 border-victorian-gold/30 p-2 shadow-victorian
+                  ${isTop ? 'z-50 opacity-100 scale-100 cursor-pointer hover:ring-1 hover:ring-amber-200 hover:ring-offset-0 hover:brightness-110 hover:shadow-[0_0_15px_5px_rgba(255,200,100,0.6)]' : 'z-40 opacity-60 scale-95'}
+              `}
+              style={{
+                  transform: `translateX(${(i - currentIndex) * 5}px) rotate(${(i - currentIndex) * 2}deg)`,
+              }}
+              onClick={isTop ? handleNextPhoto : undefined}
             />
             );
         })}
