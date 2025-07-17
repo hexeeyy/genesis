@@ -2,26 +2,38 @@ import { useEffect, useRef } from 'react';
 import { ChevronDown, Download, Eye, FileText, Leaf, Coffee, Heart, MapPin, Phone, Mail } from 'lucide-react';
 import gsap from 'gsap';
 import PhotoStack from './PhotoStack';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const HeroSection = () => {
-  const heroRef = useRef(null);
-  const textRef = useRef(null);
-  const photoRef = useRef(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const photoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
 
     // Hero text animation - very subtle
-    tl.fromTo(textRef.current?.children,
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power2.out" }
-    );
+    if (textRef.current) {
+      tl.fromTo(
+        Array.from(textRef.current.children), // Convert HTMLCollection to array
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power2.out' }
+      );
+    }
 
-     tl.fromTo(photoRef.current?.children,
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power2.out" },
-      "<"
-    );
+    // Photo animation
+    if (photoRef.current) {
+      tl.fromTo(
+        Array.from(photoRef.current.children), // Convert HTMLCollection to array
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power2.out' },
+        '<'
+      );
+    }
   }, []);
 
   const handleViewWork = () => {

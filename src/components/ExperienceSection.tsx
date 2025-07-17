@@ -10,23 +10,35 @@ const ExperienceSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    gsap.fromTo(experienceRef.current?.children,
+ useEffect(() => {
+  if (experienceRef.current && sectionRef.current) {
+    const elements = Array.from(experienceRef.current.children); // Convert HTMLCollection to array
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+    });
+    tl.fromTo(
+      elements,
       { y: 40, opacity: 0 },
       {
         y: 0,
         opacity: 1,
         duration: 0.8,
         stagger: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse"
-        }
+        ease: 'power2.out',
       }
     );
-  }, []);
+
+    // Cleanup GSAP timeline and ScrollTrigger on unmount
+    return () => {
+      tl.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }
+}, []); // Empty dependency array for static animation on mount
 
   const experiences = [
     {

@@ -11,21 +11,24 @@ const EducationSection = () => {
   const timelineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.fromTo(timelineRef.current?.children,
-      { x: -30, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse"
+    if (timelineRef.current) {
+      gsap.fromTo(
+        Array.from(timelineRef.current.children),
+        { x: -30, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+         scrollTrigger: {
+           trigger: sectionRef.current,
+           start: "top 80%",
+           toggleActions: "play none none reverse",
+         },
         }
-      }
-    );
+     );
+   }
   }, []);
 
   const education = [

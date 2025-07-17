@@ -32,21 +32,24 @@ const SkillsSection = () => {
       );
     });
 
-    gsap.fromTo(skillsRef.current?.children,
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse"
+    if (skillsRef.current) {
+      gsap.fromTo(
+        Array.from(skillsRef.current.children),
+         { y: 40, opacity: 0 },
+         {
+           y: 0,
+           opacity: 1,
+           duration: 0.8,
+           stagger: 0.15,
+           ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
         }
-      }
-    );
+     )
+    }
   }, []);
 
   const skillCategories = [
