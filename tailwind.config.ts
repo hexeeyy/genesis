@@ -19,10 +19,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
+        poppins: ['Poppins', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
-        // Keep legacy font names for existing components
-        poppins: ['Inter', 'sans-serif'],
+        display: ['Playfair Display', 'serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -31,23 +30,12 @@ export default {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'hsl(var(--primary-navy))',
-          navy: 'hsl(var(--primary-navy))',
+          DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))'
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary-blue))',
-          blue: 'hsl(var(--secondary-blue))',
+          DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))'
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent-blue))',
-          blue: 'hsl(var(--accent-blue))',
-          foreground: 'hsl(var(--accent-foreground))'
-        },
-        highlight: {
-          DEFAULT: 'hsl(var(--highlight-yellow))',
-          yellow: 'hsl(var(--highlight-yellow))'
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive))',
@@ -55,7 +43,11 @@ export default {
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
+          foreground: 'hsl(var(--muted-foreground))', // Already present, retained
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
         },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
@@ -75,22 +67,19 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         },
-        // Updated palette colors
-        'deep-navy': 'hsl(var(--deep-navy))',
-        'rich-blue': 'hsl(var(--rich-blue))',
-        'sky-blue': 'hsl(var(--sky-blue))',
-        'warm-cream': 'hsl(var(--warm-cream))',
-        'antique-gold': 'hsl(var(--antique-gold))',
-        'pearl-white': 'hsl(var(--pearl-white))',
-        // Legacy color mappings for existing components
-        ocean: 'hsl(var(--ocean))',
-        sage: 'hsl(var(--sage))',
-        'soft-blue': 'hsl(var(--soft-blue))',
-        cream: 'hsl(var(--cream))',
-        'victorian-gold': 'hsl(var(--victorian-gold))',
-        'victorian-navy': 'hsl(var(--victorian-navy))',
-        'victorian-cream': 'hsl(var(--victorian-cream))',
-        'victorian-dusty-blue': 'hsl(var(--victorian-dusty-blue))',
+        palette: {
+          sage: 'hsl(var(--sage))', // Already present, retained
+          ocean: 'hsl(var(--ocean))', // Already present, retained
+          sky: 'hsl(var(--sky))',
+          cream: 'hsl(var(--cream))',
+          'warm-beige': 'hsl(var(--warm-beige))',
+          'soft-blue': 'hsl(var(--soft-blue))',
+          'victorian-gold': '#D4A017', // Added from components
+          'victorian-navy': '#2B3A67', // Added from components
+          'victorian-cream': '#F5E8C7', // Added from components
+          'victorian-dusty-blue': '#6B728E', // Added from components
+          'muted-foreground': '#6B7280', // Added from components (specific value)
+        }
       },
       boxShadow: {
         lg: 'var(--radius)',
