@@ -1,143 +1,26 @@
-
 import { useEffect, useRef } from 'react';
-import { ChevronDown, Download, Eye } from 'lucide-react';
+import { ChevronDown, Download, Eye, FileText, Leaf, Coffee, Heart, MapPin, Phone, Mail } from 'lucide-react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PhotoStack from './PhotoStack';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
   const heroRef = useRef(null);
   const textRef = useRef(null);
-  const photoRef = useRef(null);
-  const bgElementsRef = useRef(null);
-  const parallaxLayer1 = useRef(null);
-  const parallaxLayer2 = useRef(null);
-  const parallaxLayer3 = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Enhanced hero text animation with stagger
-      const tl = gsap.timeline();
-      
-      tl.fromTo(textRef.current?.children,
-        { y: 50, opacity: 0, rotateX: 45 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          rotateX: 0,
-          duration: 1.2, 
-          stagger: 0.15, 
-          ease: "power3.out" 
-        }
-      );
+    const tl = gsap.timeline();
 
-      tl.fromTo(photoRef.current,
-        { y: 100, opacity: 0, scale: 0.8, rotateY: 15 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          scale: 1, 
-          rotateY: 0,
-          duration: 1.5, 
-          ease: "power3.out" 
-        },
-        "-=0.8"
-      );
-
-      // Advanced parallax layers with different speeds and directions
-      gsap.to(parallaxLayer1.current, {
-        yPercent: -80,
-        xPercent: -20,
-        rotation: 360,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.5
-        }
-      });
-
-      gsap.to(parallaxLayer2.current, {
-        yPercent: -60,
-        xPercent: 15,
-        rotation: -180,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 2
-        }
-      });
-
-      gsap.to(parallaxLayer3.current, {
-        yPercent: -40,
-        xPercent: -10,
-        scale: 1.2,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.8
-        }
-      });
-
-      // Multi-layered parallax for main content
-      gsap.to(heroRef.current, {
-        yPercent: -30,
-        ease: "none",
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1.2
-        }
-      });
-
-      // Floating elements with complex motion
-      gsap.set(".floating-ornament", { transformOrigin: "center center" });
-      gsap.to(".floating-ornament", {
-        y: -30,
-        x: 15,
-        rotation: 45,
-        duration: 4,
-        ease: "sine.inOut",
-        stagger: 0.3,
-        repeat: -1,
-        yoyo: true
-      });
-
-      // Scroll-triggered reveal animations
-      gsap.utils.toArray(".scroll-reveal").forEach((element: any) => {
-        gsap.fromTo(element,
-          { opacity: 0, y: 60, rotateX: 20 },
-          {
-            opacity: 1,
-            y: 0,
-            rotateX: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: element,
-              start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
-      });
-    });
-
-    return () => ctx.revert();
+    // Hero text animation - very subtle
+    tl.fromTo(textRef.current?.children,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power2.out" }
+    );
   }, []);
 
   const handleViewWork = () => {
     const projectsSection = document.querySelector('#projects');
     if (projectsSection) {
-      gsap.to(window, { duration: 1.5, scrollTo: projectsSection, ease: "power2.inOut" });
+      gsap.to(window, { duration: 1, scrollTo: projectsSection, ease: "power2.inOut" });
     }
   };
 
@@ -149,121 +32,78 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden parallax-hero">
-      
-      {/* Multi-layered parallax background */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Layer 1 - Deep background */}
-        <div 
-          ref={parallaxLayer1}
-          className="parallax-layer w-full h-[150%] -top-[25%] victorian-pattern-1 opacity-40"
-        />
-        
-        {/* Layer 2 - Medium depth */}
-        <div 
-          ref={parallaxLayer2}
-          className="parallax-layer w-full h-[120%] -top-[10%] victorian-pattern-2 opacity-30"
-        />
-        
-        {/* Layer 3 - Near surface */}
-        <div 
-          ref={parallaxLayer3}
-          className="parallax-layer w-full h-[110%] -top-[5%] victorian-pattern-3 opacity-20"
-        />
-      </div>
-
-      <div ref={heroRef} className="w-full max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden hero-bg botanical-decoration">
+      <div ref={heroRef} className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          {/* Left Column - Enhanced Text Content */}
-          <div ref={textRef} className="space-y-10 z-20 relative">
-            <div className="space-y-8 scroll-reveal">
-              <div className="text-ocean text-sm font-medium tracking-wider uppercase font-poppins scroll-reveal">
+          {/* Left Column - Text Content */}
+          <div ref={textRef} className="space-y-8 z-10 relative">
+            <div className="space-y-6">
+              <div className="text-sage text-sm font-medium tracking-wider uppercase font-poppins">
                 Psychology Student
               </div>
-              
-              <h1 className="text-5xl md:text-7xl font-light leading-tight scroll-reveal">
-                <span className="block font-display font-normal victorian-heading">Genesis</span>
+              <h1 className="text-5xl md:text-6xl font-light text-victorian-navy leading-tight">
+                <span className="block font-display font-normal">Genesis</span>
                 <span className="block font-display font-normal italic text-ocean">Clerence</span>
-                <span className="block font-poppins text-2xl md:text-4xl text-muted-foreground mt-4 font-light">
+                <span className="block font-poppins text-2xl md:text-3xl text-muted-foreground mt-3 font-light">
                   P. Martin
                 </span>
               </h1>
-              
-              <div className="w-24 h-px bg-gradient-to-r from-transparent via-ocean to-transparent scroll-reveal"></div>
-              
-              <h2 className="text-xl md:text-2xl font-light text-muted-foreground max-w-lg font-poppins leading-relaxed scroll-reveal">
+              <hr />
+              <h2 className="text-lg md:text-xl font-light text-muted-foreground max-w-lg font-poppins leading-relaxed">
                 Understanding the human mind through <br/>
-                <span className="text-ocean font-medium"> evidence-based research</span><br/> 
-                National University - Manila
+                <span className="text-ocean font-medium"> evidence-based research</span><br/> National University - Manila
               </h2>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 pt-6 scroll-reveal">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 onClick={handleViewWork}
-                className="group glass-card hover:glass-card-dark px-10 py-4 rounded-lg font-medium transition-all duration-500 shadow-victorian-deep hover:shadow-floating flex items-center gap-4 font-poppins text-sm tracking-wide interactive-card"
+                className="group border border-palette-victorian-cream/40 bg-gradient-to-r from-palette-sage to-palette-ocean hover:from-palette-ocean hover:to-palette-sage text-palette-victorian-cream px-8 py-3 rounded-sm font-medium transition-all duration-300 shadow-victorian hover:shadow-soft flex items-center gap-3 font-poppins text-sm tracking-wide"
               >
-                <Eye className="w-5 h-5 text-ocean group-hover:text-sky-blue transition-colors" />
-                <span className="bg-gradient-to-r from-ocean to-rich-blue bg-clip-text text-transparent">
-                  View My Work
-                </span>
+                <Eye className="w-4 h-4" />
+                View My Work
               </button>
 
               <button
                 onClick={handleDownloadCV}
-                className="group glass-card hover:glass-card-dark px-10 py-4 rounded-lg font-medium transition-all duration-500 flex items-center gap-4 font-poppins text-sm tracking-wide shadow-victorian-deep hover:shadow-floating interactive-card"
+                className="group border border-palette-victorian-navy bg-palette-victorian-cream text-palette-ocean hover:bg-gradient-to-r hover:from-palette-sage hover:to-palette-ocean hover:text-palette-victorian-cream px-8 py-3 rounded-sm font-medium transition-all duration-300 flex items-center gap-3 font-poppins text-sm tracking-wide shadow-soft hover:shadow-victorian"
               >
-                <Download className="w-5 h-5 text-ocean group-hover:text-sky-blue transition-colors" />
-                <span className="bg-gradient-to-r from-deep-navy to-ocean bg-clip-text text-transparent">
-                  Download CV
-                </span>
+                <Download className="w-4 h-4" />
+                Download CV
               </button>
             </div>
           </div>
 
-          {/* Right Column - Enhanced Image */}
-          <div ref={photoRef} className="z-30 opacity-95 scroll-reveal">
-            <div className="relative">
-              {/* Decorative frame */}
-              <div className="absolute -inset-4 victorian-frame opacity-60"></div>
-              <PhotoStack />
-            </div>
+          {/* Right Column - Image */}
+          <div className="z-20 opacity-90">
+            <PhotoStack />
           </div>
           
         </div>
 
-        {/* Enhanced Scroll Indicator */}
-        <div 
-          onClick={handleViewWork}
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2 cursor-pointer scroll-reveal"
+        {/* Scroll Indicator */}
+        <div onClick={handleViewWork}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-popoppins"
         >
-          <div className="glass-card p-4 rounded-full shadow-floating hover:shadow-victorian-deep transition-all duration-500 animate-pulse interactive-card">
-            <ChevronDown className="text-ocean w-6 h-6" />
+          <div className="bg-victorian-cream/80 backdrop-blur-sm border border-victorian-gold/50 p-3 rounded-full shadow-victorian hover:shadow-strong transition-all duration-300 animate-subtle-breathe">
+            <ChevronDown className="text-ocean w-5 h-5" />
           </div>
         </div>
+
       </div>
 
-      {/* Enhanced floating decorative elements */}
-      <div ref={bgElementsRef} className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Victorian ornaments */}
-        <div className="floating-ornament absolute top-20 left-16 w-16 h-16 victorian-ornament opacity-60"></div>
-        <div className="floating-ornament absolute top-40 right-20 w-12 h-12 victorian-ornament opacity-40"></div>
-        <div className="floating-ornament absolute bottom-32 left-8 w-20 h-20 victorian-ornament opacity-50"></div>
-        <div className="floating-ornament absolute bottom-20 right-16 w-14 h-14 victorian-ornament opacity-45"></div>
-        
-        {/* Gradient orbs with advanced motion */}
-        <div className="parallax-slow absolute top-1/4 left-12 w-40 h-40 bg-gradient-to-br from-antique-gold/20 to-transparent rounded-full blur-3xl"></div>
-        <div className="parallax-medium absolute bottom-1/4 right-12 w-52 h-52 bg-gradient-to-br from-ocean/15 to-sky-blue/10 rounded-full blur-3xl"></div>
-        <div className="parallax-fast absolute top-1/2 left-1/4 w-32 h-32 bg-gradient-to-br from-rich-blue/20 to-transparent rounded-full blur-2xl"></div>
-        
-        {/* Since 1860 branding with enhanced styling */}
-        <div className="absolute top-8 right-8 glass-card px-6 py-3 rounded-full scroll-reveal">
-          <span className="text-xs font-medium tracking-widest font-poppins bg-gradient-to-r from-deep-navy to-ocean bg-clip-text text-transparent">
-            EST. 1860
-          </span>
-        </div>
+      {/* Background decorative elements with 1860s theme */}
+      <div className="absolute top-1/4 left-8 w-32 h-32 bg-victorian-gold/20 rounded-full blur-3xl floating-element animate-subtle-breathe"></div>
+      <div className="absolute bottom-1/4 right-8 w-40 h-40 bg-victorian-dusty-blue/20 rounded-full blur-3xl floating-element animate-gentle-float"></div>
+      
+      {/* Victorian pattern overlay */}
+      <div className="absolute inset-0 opacity-40 popoppins-events-none">
+        <div className="w-full h-full" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='a' width='50' height='50' patternTransform='scale(2)' patternUnits='userSpaceOnUse'%3E%3Crect width='100%25' height='100%25' fill='%23fdf5aa' fill-opacity='.29'/%3E%3Cpath fill='%23113F67' fill-opacity='.1' d='M27.726 20.284c.048-.237.144-.462.18-.7.028-.297.083-.597.062-.9a4.5 4.5 0 0 0-.216-1.25c-.124-.304-.227-.627-.433-.892-.17-.269-.343-.544-.592-.747-.167-.167-.363-.316-.462-.54a1.34 1.34 0 0 1 .345-1.643c.506-.441 1.346-.408 1.805.087.297.287.375.706.519 1.076.141.376.17.778.228 1.172 0 .333.011.666-.006.998-.055.354-.086.718-.177 1.068-.06.221-.146.434-.227.649a4.7 4.7 0 0 1-.557 1.002c-.132.212-.33.388-.459.608zm2.018 2.018q.28-.254.58-.48c.368-.255.757-.49 1.188-.625.352-.156.735-.231 1.115-.29.28-.014.554-.08.836-.064.395-.007.792.003 1.177.097.423.038.813.22 1.212.356.625.232 1 .965.816 1.607-.169.671-.91 1.12-1.583.963-.338-.068-.628-.285-.835-.555-.206-.204-.405-.42-.669-.55-.249-.17-.505-.333-.797-.419a3.4 3.4 0 0 0-1.041-.262c-.435-.081-.887-.042-1.32.022-.232.03-.46.117-.679.2m10.891.4c-.24-.72-.719-1.939-1.878-3.098a7.6 7.6 0 0 0-3.018-1.878 7.3 7.3 0 0 0-3.017-.4 7.4 7.4 0 0 0-.74-3.817 7.5 7.5 0 0 0-1.538-2.198 7.77 7.77 0 0 0-5.416-2.278v1.4a6.2 6.2 0 0 1 3.677 1.278h.02c.2.14.38.3.56.48.06.06.1.1.14.16.02 0 .02.02.04.02.04.04.1.08.14.139.16.16.319.34.459.54v.02c.34.44.62.919.82 1.418.16.4.279.82.359 1.24s.1.859.08 1.298c0 .1-.02.22-.02.32-.02.22-.06.44-.1.66l-.2 1.059 1.06-.2a6.1 6.1 0 0 1 4.955 1.139h.02c.513.411.927.878 1.34 1.359v.02c.339.44.619.92.819 1.419.324.739.386 1.464.399 2.198h1.399c.037-.783-.177-1.594-.36-2.298m-20.323-.4c-.237-.048-.462-.144-.7-.18-.297-.028-.598-.083-.9-.062a4.5 4.5 0 0 0-1.25.216c-.305.124-.627.227-.892.433-.269.17-.544.343-.747.592-.167.167-.316.363-.54.462a1.34 1.34 0 0 1-1.643-.345c-.441-.506-.408-1.346.087-1.805.287-.297.706-.375 1.076-.519.376-.141.778-.17 1.172-.228.332 0 .666-.011.997.006.355.055.719.086 1.068.176.222.062.434.147.65.228.354.147.694.328 1.002.557.216.133.387.33.608.459zm2.018-2.018a8 8 0 0 1-.48-.58c-.255-.368-.49-.758-.625-1.188-.156-.352-.231-.735-.29-1.115-.015-.28-.08-.554-.064-.836-.007-.395.003-.792.097-1.177.038-.423.22-.813.355-1.212.233-.625.966-1 1.608-.816.67.169 1.12.91.963 1.583-.069.338-.286.628-.556.835-.203.206-.419.405-.548.669-.182.26-.342.536-.44.84-.123.32-.219.654-.242.998-.081.435-.042.887.022 1.32.03.232.117.46.2.679m1.68-11.191c-.44.06-.86.16-1.28.3-.719.24-1.938.719-3.097 1.878a7.6 7.6 0 0 0-1.878 3.018 7.3 7.3 0 0 0-.4 3.017 7.4 7.4 0 0 0-3.817.74c-.66.3-1.439.779-2.198 1.538C9.66 21.263 9.02 23.321 9 25h1.4c.02-1.299.52-2.618 1.339-3.677v-.02c.39-.53.865-.936 1.338-1.339h.02c.44-.34.92-.62 1.42-.82.399-.16.819-.279 1.238-.359s.86-.1 1.3-.08c.1 0 .22.02.319.02.22.02.44.06.66.1l1.059.2-.2-1.06a6.1 6.1 0 0 1 1.139-4.955v-.02c.41-.513.878-.927 1.359-1.34h.02c.44-.339.92-.619 1.419-.819.738-.324 1.464-.386 2.198-.399V9.033c-.364-.003-.682.043-1.02.06zm5.735 18.605c.237.048.462.144.7.18.296.028.597.083.9.063a4.5 4.5 0 0 0 1.25-.217c.304-.124.627-.227.892-.433.269-.17.544-.343.747-.592.167-.167.316-.363.54-.462a1.34 1.34 0 0 1 1.643.345c.441.506.408 1.347-.087 1.805-.287.297-.706.375-1.076.519-.377.141-.778.17-1.172.228-.333 0-.666.011-.998-.006-.354-.055-.718-.086-1.068-.176-.221-.061-.434-.147-.649-.228a4.7 4.7 0 0 1-1.002-.556c-.212-.133-.388-.33-.608-.46zm-2.018 2.018q.253.28.48.58c.254.368.49.758.625 1.188.156.352.231.735.29 1.115.014.28.08.554.064.836.007.395-.003.792-.097 1.177-.038.423-.22.813-.356 1.212-.232.625-.965 1-1.607.817-.671-.17-1.12-.91-.963-1.584.068-.338.285-.628.555-.835.204-.206.42-.405.55-.669.181-.26.34-.536.439-.84a3.5 3.5 0 0 0 .242-.998c.081-.435.042-.887-.022-1.32-.03-.232-.117-.46-.2-.679m-1.999 11.231c.1-.02.22-.02.32-.04.44-.06.86-.16 1.28-.3.718-.24 1.938-.719 3.097-1.878a7.6 7.6 0 0 0 1.878-3.018c.34-.959.48-1.978.4-3.017 1.319.1 2.638-.16 3.817-.74.66-.3 1.439-.779 2.198-1.538A7.77 7.77 0 0 0 40.995 25h-1.4a6.2 6.2 0 0 1-1.278 3.677v.02c-.14.2-.3.38-.48.56-.06.04-.1.1-.16.14 0 .02-.02.02-.02.04-.04.04-.08.1-.14.14-.159.16-.339.32-.539.459h-.02c-.44.34-.919.62-1.419.82-.4.16-.819.28-1.239.359s-.859.099-1.298.079c-.1 0-.22-.02-.32-.02-.22-.02-.44-.06-.66-.1l-1.059-.2.2 1.06a6.1 6.1 0 0 1-1.14 4.955v.02c-.375.503-.925.95-1.358 1.34h-.02c-.44.34-.92.619-1.419.819-.4.16-.82.28-1.239.36-.32.06-.64.02-.96.04v1.398c.24-.04.48 0 .7-.02zm-3.397-11.23c-.048.236-.144.461-.18.699-.028.297-.083.598-.063.9.013.423.086.846.217 1.25.124.305.227.627.433.892.17.269.343.544.592.747.167.167.363.316.462.54a1.34 1.34 0 0 1-.345 1.643c-.506.441-1.347.408-1.805-.087-.297-.287-.375-.706-.519-1.076-.141-.376-.17-.778-.228-1.172 0-.332-.012-.666.006-.998.055-.354.086-.718.176-1.067.061-.222.147-.434.228-.65.147-.354.328-.694.556-1.002.134-.216.33-.387.46-.608zm-2.018-2.02q-.28.255-.58.48c-.368.256-.758.49-1.188.626-.352.156-.735.231-1.115.29-.28.015-.554.08-.836.064-.395.007-.792-.003-1.177-.097-.423-.038-.813-.22-1.212-.355-.625-.233-1-.966-.817-1.608.17-.67.91-1.12 1.584-.963.338.069.628.286.835.555.206.204.405.42.669.55.26.181.536.34.84.439.32.122.654.219.998.242.434.081.887.042 1.32-.022.232-.03.46-.117.679-.2zM9.08 25.7c.02.1.02.22.04.32.06.44.16.86.3 1.28.24.719.719 1.938 1.878 3.097a7.6 7.6 0 0 0 3.017 1.878c.96.34 1.979.48 3.018.4-.1 1.319.16 2.638.74 3.817.3.66.779 1.439 1.538 2.198a7.77 7.77 0 0 0 5.416 2.278v-1.399a6.2 6.2 0 0 1-3.677-1.279h-.02c-.2-.14-.38-.3-.56-.48-.06-.04-.1-.1-.14-.16-.02 0-.02-.02-.04-.02-.04-.039-.1-.079-.14-.139-.16-.16-.32-.34-.46-.54v-.02a6 6 0 0 1-.818-1.418c-.16-.4-.28-.82-.36-1.24-.08-.419-.1-.859-.08-1.298 0-.1.02-.22.02-.32.02-.22.06-.44.1-.66l.2-1.059-1.06.2a6.1 6.1 0 0 1-4.956-1.139h-.02c-.513-.41-.927-.88-1.338-1.359v-.02a6 6 0 0 1-.82-1.419c-.16-.4-.28-.82-.36-1.239-.06-.32-.08-.64-.1-.959H9.002c.04.24.06.48.08.7zm36.203 21.603c-.237-.048-.462-.144-.7-.18-.297-.028-.598-.083-.9-.062a4.5 4.5 0 0 0-1.25.216c-.305.124-.627.227-.892.433-.269.17-.544.343-.747.592-.167.167-.316.363-.54.462a1.34 1.34 0 0 1-1.643-.345c-.441-.506-.408-1.346.087-1.805.287-.297.706-.375 1.076-.519.376-.141.778-.17 1.172-.228.332 0 .666-.011.998.006.354.055.718.086 1.067.176.222.062.434.147.65.228.354.147.694.328 1.002.557.216.133.387.33.608.459zm2.018-2.018a8 8 0 0 1-.48-.58c-.255-.368-.49-.758-.625-1.188-.156-.352-.231-.735-.29-1.115-.014-.28-.08-.554-.064-.836-.007-.395.003-.792.097-1.177.038-.423.22-.813.356-1.212.232-.625.965-1 1.607-.817.67.17 1.12.91.963 1.584-.069.338-.286.628-.555.835-.204.206-.42.405-.55.669-.181.26-.34.536-.439.84a3.5 3.5 0 0 0-.242.998c-.081.435-.042.887.022 1.32.03.232.117.46.2.679M4.716 2.698c.237.048.462.144.7.18.297.028.598.083.9.062a4.5 4.5 0 0 0 1.25-.216c.305-.124.627-.227.892-.433.269-.17.544-.343.747-.592.167-.167.316-.363.54-.462a1.34 1.34 0 0 1 1.643.345c.441.506.408 1.346-.087 1.805-.287.297-.706.375-1.076.519-.376.141-.778.17-1.172.228-.332 0-.666.011-.998-.006-.354-.055-.718-.086-1.067-.176-.222-.062-.434-.147-.65-.228a4.7 4.7 0 0 1-1.002-.557c-.212-.132-.387-.33-.608-.459zM2.698 4.716q.253.28.48.58c.255.368.49.758.625 1.188.156.352.231.735.29 1.115.014.28.08.554.064.836.007.395-.003.792-.097 1.177-.038.423-.22.813-.356 1.212-.232.625-.965 1-1.607.817-.67-.17-1.12-.91-.963-1.584.069-.338.286-.628.555-.835.204-.206.42-.405.55-.669.181-.26.34-.536.439-.84a3.5 3.5 0 0 0 .242-.998c.081-.435.042-.887-.022-1.32-.03-.232-.117-.46-.2-.679m44.604 0c-.048.237-.144.462-.18.7-.028.297-.083.598-.062.9.012.423.085.846.216 1.25.124.305.227.627.433.892.17.269.343.544.592.747.167.167.363.316.462.54a1.34 1.34 0 0 1-.345 1.643c-.506.441-1.346.408-1.805-.087-.297-.287-.375-.706-.519-1.076-.141-.376-.17-.778-.228-1.172 0-.332-.011-.666.006-.998.055-.354.086-.718.176-1.067.062-.222.147-.434.228-.65.147-.354.328-.694.557-1.002.133-.216.33-.387.459-.608zm-2.018-2.018q-.28.253-.58.48c-.368.255-.758.49-1.188.625-.352.156-.735.231-1.115.29-.28.014-.554.08-.836.064-.395.007-.792-.003-1.177-.097-.423-.038-.813-.22-1.212-.356-.625-.232-1-.965-.817-1.607.17-.67.91-1.12 1.584-.963.338.069.628.286.835.555.206.204.405.42.669.55.26.181.536.34.84.439.32.122.654.219.998.242.435.081.887.042 1.32-.022.232-.03.46-.117.679-.2M2.698 45.284c.048-.237.144-.462.18-.7.028-.297.083-.598.062-.9a4.5 4.5 0 0 0-.216-1.25c-.124-.305-.227-.627-.433-.892-.17-.269-.343-.544-.592-.747-.167-.167-.363-.316-.462-.54a1.34 1.34 0 0 1 .345-1.643c.506-.441 1.346-.408 1.805.087.297.287.375.706.519 1.076.141.376.17.778.228 1.172 0 .332.011.666-.006.998-.055.354-.086.718-.176 1.067-.062.222-.147.434-.228.65a4.7 4.7 0 0 1-.557 1.002c-.132.212-.33.387-.459.608zm2.018 2.018q.28-.254.58-.48c.368-.255.758-.49 1.188-.625.352-.156.735-.231 1.115-.29.28-.014.554-.08.836-.064.395-.007.792.003 1.177.097.423.038.813.22 1.212.356.625.232 1 .965.817 1.607-.17.67-.91 1.12-1.584.963-.338-.069-.628-.286-.835-.555-.206-.204-.405-.42-.669-.55-.249-.17-.505-.333-.797-.419a3.4 3.4 0 0 0-1.041-.262c-.435-.081-.887-.042-1.32.022-.232.03-.46.117-.679.2m44.265-13.21c-.44.06-.86.16-1.28.3-.719.24-1.938.72-3.097 1.879a7.6 7.6 0 0 0-1.878 3.018 7.3 7.3 0 0 0-.4 3.017 7.4 7.4 0 0 0-3.817.74c-.66.3-1.439.779-2.198 1.538-1.679 1.679-2.318 3.737-2.338 5.416h1.399c.02-1.299.52-2.618 1.339-3.677v-.02c.39-.53.866-.936 1.339-1.339h.02c.44-.34.919-.62 1.418-.82.4-.16.82-.28 1.24-.359.42-.08.859-.1 1.298-.08.1 0 .22.02.32.02.22.02.44.06.66.1l1.059.2-.2-1.06a6.1 6.1 0 0 1 1.139-4.955v-.02c.41-.513.878-.927 1.359-1.34h.02c.44-.34.92-.619 1.419-.819.739-.324 1.464-.386 2.198-.399v-1.399c-.364-.003-.682.043-1.02.06zM.699 15.948c.1-.02.22-.02.32-.04.44-.06.86-.16 1.28-.3.719-.24 1.938-.719 3.097-1.878a7.6 7.6 0 0 0 1.878-3.018c.34-.959.48-1.978.4-3.017 1.319.1 2.638-.16 3.817-.74.66-.3 1.439-.779 2.198-1.538A7.77 7.77 0 0 0 15.967 0h-1.399a6.2 6.2 0 0 1-1.279 3.677v.02c-.14.2-.3.38-.48.56-.06.04-.1.1-.16.14 0 .02-.02.02-.02.04-.04.04-.079.1-.139.14-.16.16-.34.32-.54.459h-.02c-.44.34-.919.62-1.418.82-.4.16-.82.28-1.24>.359-.42.08-.859.1-1.298.08-.1 0-.22-.02-.32-.02-.22-.02-.44-.06-.66-.1l-1.059-.2.2 1.06a6.1 6.1 0 0 1-1.139 4.955v.02c-.376.503-.926.95-1.359 1.34h-.02c-.44.339-.92.619-1.419.819-.4.16-.82.28-1.239.36-.32.06-.64.019-.959.039v1.399c.24-.04.48 0 .7-.02zM34.053.7c.02.1.02.22.04.32.06.44.16.86.3 1.28.24.719.719 1.938 1.878 3.097a7.6 7.6 0 0 0 3.018 1.878c.959.34 1.978.48 3.017.4-.1 1.319.16 2.638.74 3.817.3.66.779 1.439 1.538 2.198A7.77 7.77 0 0 0 50 15.967v-1.399a6.2 6.2 0 0 1-3.677-1.279h-.02c-.2-.14-.38-.3-.56-.48-.06-.04-.1-.1-.14-.16-.02 0-.02-.02-.04-.02-.04-.04-.1-.079-.14-.139-.16-.16-.32-.34-.459-.54v-.02a6 6 0 0 1-.82-1.418c-.16-.4-.28-.82-.359-1.24-.08-.42-.1-.859-.08-1.298 0-.1.02-.22.02-.32.02-.22.06-.44.1-.66l.2-1.059-1.06.2a6.1 6.1 0 0 1-4.955-1.139h-.02c-.514-.41-.928-.88-1.34-1.359v-.02a6 6 0 0 1-.819-1.419c-.16-.4-.28-.82-.36-1.239-.06-.32-.079-.64-.099-.959h-1.399c.04.24.06.48.08.7M15.608 47.702c-.24-.72-.72-1.939-1.879-3.098a7.6 7.6 0 0 0-3.018-1.878 7.3 7.3 0 0 0-3.017-.4 7.4 7.4 0 0 0-.74-3.817 7.5 7.5 0 0 0-1.538-2.198A7.77 7.77 0 0 0 0 34.033v1.399c1.299.02 2.618.46 3.677 1.279h.02c.2.14.38.3.56.48.06.06.1.1.14.16.02 0 .02.02.04.02.04.04.1.079.14.139.16.16.32.34.459.54v.02c.34.44.62.919.82 1.418.16.4.28.82.359 1.24.08.42.1.859.08 1.298 0 .1-.02.22-.02.32-.02.22-.06.44-.1.66l-.2 1.059 1.06-.2a6.1 6.1 0 0 1 4.955 1.139h.02c.514.411.927.878 1.34 1.359v.02c.34.44.619.92.819 1.419.324.739.386 1.464.399 2.198h1.399c.037-.783-.177-1.594-.36-2.298z'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='800%25' height='800%25' fill='url(%23a)' transform='translate(-150)'/%3E%3C/svg%3E")`,
+          backgroundSize: '100px 100px'
+        }}></div>
       </div>
     </section>
   );
