@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Award, MessageCircle, Users2, Lightbulb } from 'lucide-react';
 import gsap from 'gsap';
@@ -10,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.fromTo(contentRef.current?.children,
@@ -27,6 +27,30 @@ const AboutSection = () => {
         }
       }
     );
+
+    // Parallax effect for background
+    gsap.to(backgroundRef.current, {
+      yPercent: -20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // Content parallax effect
+    gsap.to(contentRef.current, {
+      yPercent: -10,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
   }, []);
 
   const skills = [
@@ -48,14 +72,19 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-background"
+    <section id="about" ref={sectionRef} className="py-20 bg-background relative overflow-hidden">
+      <div 
+        ref={backgroundRef}
+        className="absolute inset-0"
         style={{
           backgroundImage: `url(${aboutBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundColor: 'rgba(0, 0, 50, 0.5)' // Fallback color
-        }}>
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          backgroundColor: 'rgba(0, 0, 50, 0.5)'
+        }}
+      ></div>
+      
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div ref={contentRef} className="space-y-16">
           
           {/* Header */}

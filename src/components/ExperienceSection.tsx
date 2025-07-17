@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Briefcase, Users, Target, TrendingUp, Calendar, MapPin } from 'lucide-react';
 import gsap from 'gsap';
@@ -9,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ExperienceSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.fromTo(experienceRef.current?.children,
@@ -26,6 +26,29 @@ const ExperienceSection = () => {
         }
       }
     );
+
+    // Parallax effects
+    gsap.to(headerRef.current, {
+      yPercent: -15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    gsap.to(experienceRef.current, {
+      yPercent: -8,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
   }, []);
 
   const experiences = [
@@ -57,12 +80,12 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section id="experience" ref={sectionRef} className="py-20 bg-background">
+    <section id="experience" ref={sectionRef} className="py-20 bg-background relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="space-y-16">
           
           {/* Header */}
-          <div className="text-center space-y-4">
+          <div ref={headerRef} className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-light text-foreground font-display">
               Experience
             </h2>

@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { GraduationCap, Award, Calendar, MapPin } from 'lucide-react';
 import gsap from 'gsap';
@@ -9,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 const EducationSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.fromTo(timelineRef.current?.children,
@@ -26,6 +26,30 @@ const EducationSection = () => {
         }
       }
     );
+
+    // Parallax effect for header
+    gsap.to(headerRef.current, {
+      yPercent: -15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // Parallax effect for timeline content
+    gsap.to(timelineRef.current, {
+      yPercent: -8,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
   }, []);
 
   const education = [
@@ -61,12 +85,12 @@ const EducationSection = () => {
   ];
 
   return (
-    <section id="education" ref={sectionRef} className="py-20 bg-card paper-texture">
+    <section id="education" ref={sectionRef} className="py-20 bg-card paper-texture relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="space-y-16">
           
           {/* Header */}
-          <div className="text-center space-y-4">
+          <div ref={headerRef} className="text-center space-y-4">
             <h2 className="text-4xl md:text-5xl font-light text-foreground font-display">
               Education
             </h2>
