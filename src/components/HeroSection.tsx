@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ChevronDown, Download, Eye, FileText, Leaf, Coffee, Heart, MapPin, Phone, Mail } from 'lucide-react';
+import { ChevronDown, Download, Eye } from 'lucide-react';
 import gsap from 'gsap';
 import PhotoStack from './PhotoStack';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,6 +12,8 @@ const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const photoRef = useRef<HTMLDivElement>(null);
+  const bgElementsRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -27,13 +29,41 @@ const HeroSection = () => {
 
     // Photo animation
     if (photoRef.current) {
-      tl.fromTo(
-        Array.from(photoRef.current.children), // Convert HTMLCollection to array
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power2.out' },
-        '<'
-      );
+    tl.fromTo(
+      Array.from(photoRef.current.children),
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: 'power2.out' },
+      '<'
+    );
+  }
+
+
+    // Parallax effect for background elements
+    if (bgElementsRef.current) {
+      gsap.to(Array.from(bgElementsRef.current.children), {
+        yPercent: -50,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
     }
+;
+
+    // Parallax effect for hero content
+    gsap.to(heroRef.current, {
+      yPercent: -20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1
+      }
+    });
   }, []);
 
   const handleViewWork = () => {
@@ -96,7 +126,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right Column - Image */}
-          <div ref={photoRef} className="z-20 opacity-90">
+          <div ref={photoRef} className="z-90 opacity-90">
             <PhotoStack />
           </div>
           
@@ -114,7 +144,7 @@ const HeroSection = () => {
       </div>
 
       {/* Background decorative elements with 1860s theme */}
-      <div className="absolute top-1/4 left-8 w-32 h-32 bg-victorian-gold/20 rounded-full blur-3xl floating-element animate-subtle-breathe"></div>
+      <div ref={bgElementsRef} className="absolute top-1/4 left-8 w-32 h-32 bg-victorian-gold/20 rounded-full blur-3xl floating-element animate-subtle-breathe"></div>
       <div className="absolute bottom-1/4 right-8 w-40 h-40 bg-victorian-dusty-blue/20 rounded-full blur-3xl floating-element animate-gentle-float"></div>
       
       {/* Victorian pattern overlay */}
