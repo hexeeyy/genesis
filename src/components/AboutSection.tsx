@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { Award, MessageCircle, Users2, Lightbulb } from 'lucide-react';
 import gsap from 'gsap';
@@ -10,47 +11,88 @@ const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
+  const skillsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Content animation with advanced 3D effects
     gsap.fromTo(contentRef.current?.children,
-      { y: 30, opacity: 0 },
+      { y: 60, opacity: 0, rotationX: 20, scale: 0.9 },
+      {
+        y: 0, 
+        opacity: 1, 
+        rotationX: 0, 
+        scale: 1,
+        duration: 1, 
+        stagger: 0.2, 
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Skills cards with 3D flip animation
+    gsap.fromTo(skillsRef.current?.children,
+      { y: 40, opacity: 0, rotationY: 45 },
       {
         y: 0,
         opacity: 1,
+        rotationY: 0,
         duration: 0.8,
         stagger: 0.15,
-        ease: "power2.out",
+        ease: "back.out(1.7)",
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: skillsRef.current,
           start: "top 85%",
           toggleActions: "play none none reverse"
         }
       }
     );
 
-    // Parallax effect for background
+    // Advanced multi-layer parallax for background
     gsap.to(backgroundRef.current, {
-      yPercent: -20,
+      yPercent: -30,
+      scale: 1.1,
+      rotation: 2,
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top bottom",
         end: "bottom top",
-        scrub: true
+        scrub: 1.5
       }
     });
 
-    // Content parallax effect
+    // Content parallax with perspective
     gsap.to(contentRef.current, {
+      yPercent: -15,
+      rotationX: -3,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1
+      }
+    });
+
+    // Skills section parallax
+    gsap.to(skillsRef.current, {
       yPercent: -10,
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top bottom",
         end: "bottom top",
-        scrub: true
+        scrub: 0.5
       }
     });
+
+    // Set 3D perspective
+    gsap.set([contentRef.current, skillsRef.current], { perspective: 1000 });
+
   }, []);
 
   const skills = [
@@ -148,7 +190,7 @@ const AboutSection = () => {
                 Skills & Interests
               </h3>
               
-              <div className="space-y-6">
+              <div ref={skillsRef} className="space-y-6">
                 {skills.map((skill, index) => (
                   <div 
                     key={index}

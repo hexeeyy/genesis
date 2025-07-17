@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { GraduationCap, Award, Calendar, MapPin } from 'lucide-react';
 import gsap from 'gsap';
@@ -9,47 +10,92 @@ const EducationSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Timeline items with 3D reveal animation
     gsap.fromTo(timelineRef.current?.children,
-      { x: -30, opacity: 0 },
+      { x: -60, opacity: 0, rotationY: -30, scale: 0.8 },
       {
         x: 0,
         opacity: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out",
+        rotationY: 0,
+        scale: 1,
+        duration: 1,
+        stagger: 0.25,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 80%",
+          start: "top 75%",
           toggleActions: "play none none reverse"
         }
       }
     );
 
-    // Parallax effect for header
+    // Timeline line progressive reveal
+    if (lineRef.current) {
+      gsap.fromTo(lineRef.current,
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          duration: 1.5,
+          ease: "power2.out",
+          transformOrigin: "top",
+          scrollTrigger: {
+            trigger: timelineRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+
+    // Advanced parallax for header with 3D rotation
     gsap.to(headerRef.current, {
-      yPercent: -15,
+      yPercent: -25,
+      rotationX: -8,
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top bottom",
         end: "bottom top",
-        scrub: true
+        scrub: 1.5
       }
     });
 
-    // Parallax effect for timeline content
+    // Timeline content parallax with depth
     gsap.to(timelineRef.current, {
-      yPercent: -8,
+      yPercent: -12,
+      rotationX: 3,
       ease: "none",
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top bottom",
         end: "bottom top",
-        scrub: true
+        scrub: 1
       }
     });
+
+    // Individual timeline items float effect
+    const timelineItems = timelineRef.current?.children;
+    if (timelineItems) {
+      Array.from(timelineItems).forEach((item, index) => {
+        gsap.to(item, {
+          y: `${(index % 2 === 0 ? -1 : 1) * 10}px`,
+          ease: "none",
+          scrollTrigger: {
+            trigger: item,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.5
+          }
+        });
+      });
+    }
+
+    // Set 3D perspective
+    gsap.set([headerRef.current, timelineRef.current], { perspective: 1200 });
+
   }, []);
 
   const education = [
@@ -103,14 +149,17 @@ const EducationSection = () => {
 
           {/* Timeline */}
           <div ref={timelineRef} className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-border"></div>
+            {/* Timeline line with progressive reveal */}
+            <div 
+              ref={lineRef}
+              className="absolute left-8 top-0 bottom-0 w-px bg-border origin-top"
+            ></div>
             
             <div className="space-y-12">
               {education.map((edu, index) => (
                 <div key={index} className="relative flex items-start gap-8">
-                  {/* Timeline dot */}
-                  <div className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center shadow-medium ${
+                  {/* Timeline dot with enhanced animation */}
+                  <div className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center shadow-medium transition-all duration-300 hover:scale-110 ${
                     edu.current ? 'bg-ocean' : 'bg-card border-2 border-ocean'
                   }`}>
                     <GraduationCap className={`w-7 h-7 ${
@@ -118,8 +167,8 @@ const EducationSection = () => {
                     }`} />
                   </div>
 
-                  {/* Content */}
-                  <div className="flex-1 bg-background border border-border rounded-lg p-6 shadow-soft hover:shadow-medium transition-all duration-300">
+                  {/* Content with enhanced hover effects */}
+                  <div className="flex-1 bg-background border border-border rounded-lg p-6 shadow-soft hover:shadow-medium transition-all duration-500 hover:-translate-y-1">
                     <div className="space-y-4">
                       <div className="flex items-start justify-between">
                         <div>
@@ -131,7 +180,7 @@ const EducationSection = () => {
                           </h4>
                         </div>
                         {edu.current && (
-                          <span className="bg-ocean/10 text-ocean px-3 py-1 rounded-sm text-sm font-medium font-inter">
+                          <span className="bg-ocean/10 text-ocean px-3 py-1 rounded-sm text-sm font-medium font-inter animate-pulse">
                             Current
                           </span>
                         )}

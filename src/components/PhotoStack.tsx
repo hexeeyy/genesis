@@ -1,7 +1,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useSprings, animated, to as interpolate } from '@react-spring/web';
-import { useDrag } from '@use-gesture/react';
+import { useDrag } from 'react-use-gesture';
 import { gsap } from 'gsap';
 import backgroundImage from '../assets/images/bg-stack.png';
 
@@ -17,15 +17,15 @@ const to = (i: number) => ({
   x: 0,
   y: i * -4,
   scale: 1,
-  rot: -5 + Math.random() * 10,
+  rot: -10 + Math.random() * 20,
   delay: i * 100,
 });
 
-const from = (_i: number) => ({ x: 0, rot: 0, scale: 1.2, y: -1000 });
+const from = (_i: number) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 
 // Transform function for 3D perspective
 const trans = (r: number, s: number) =>
-  `perspective(1000px) rotateX(10deg) rotateY(${r / 20}deg) rotateZ(${r}deg) scale(${s})`;
+  `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
 const PhotoStack = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,7 +40,7 @@ const PhotoStack = () => {
 
   // Drag gesture handling
   const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
-    const trigger = velocity > 0.15;
+    const trigger = velocity > 0.2;
     const dir = xDir < 0 ? -1 : 1;
     
     if (!down && trigger) {
@@ -54,7 +54,7 @@ const PhotoStack = () => {
       const isGone = gone.has(index);
       const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0;
       const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0);
-      const scale = down ? 1.05 : 1;
+      const scale = down ? 1.1 : 1;
       
       return {
         x,
