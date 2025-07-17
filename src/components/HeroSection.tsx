@@ -6,6 +6,7 @@ import PhotoStack from './PhotoStack';
 const HeroSection = () => {
   const heroRef = useRef(null);
   const textRef = useRef(null);
+  const photoRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -14,6 +15,12 @@ const HeroSection = () => {
     tl.fromTo(textRef.current?.children,
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power2.out" }
+    );
+
+     tl.fromTo(photoRef.current?.children,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power2.out" },
+      "<"
     );
   }, []);
 
@@ -33,7 +40,7 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden hero-bg botanical-decoration">
-      <div ref={heroRef} className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div ref={heroRef} className="w-full max-w-[1100px] mx-auto px-6 sm:px-8 lg:px-16">
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -77,7 +84,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right Column - Image */}
-          <div className="z-20 opacity-90">
+          <div ref={photoRef} className="z-20 opacity-90">
             <PhotoStack />
           </div>
           
