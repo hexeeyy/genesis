@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,6 +33,14 @@
 
     --soft-blue: 207, 67%, 94%;
     --cream: 45, 75%, 94%;
+    
+    /* Enhanced Victorian palette */
+    --deep-navy: 223, 40%, 25%;
+    --rich-blue: 210, 85%, 35%;
+    --sky-blue: 207, 75%, 60%;
+    --warm-cream: 48, 95%, 96%;
+    --antique-gold: 45, 80%, 55%;
+    --pearl-white: 0, 0%, 98%;
   }
 
   .dark {
@@ -55,146 +64,277 @@
   }
 }
 
-.botanical-decoration {
-  background-image: url('./assets/images/floral-bg.png');
-  background-size: 300px;
-  background-repeat: repeat;
-  opacity: 0.4;
+/* Advanced Parallax Backgrounds */
+.parallax-hero {
+  background: linear-gradient(135deg, 
+    hsl(var(--deep-navy)) 0%, 
+    hsl(var(--rich-blue)) 25%, 
+    hsl(var(--sky-blue)) 50%, 
+    hsl(var(--warm-cream)) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-bg {
-    background-image: url('./assets/images/bg-hero.png');
-    background-size: cover;
-    background-position: center;
+.parallax-about {
+  background: linear-gradient(45deg, 
+    hsl(var(--warm-cream)) 0%, 
+    hsl(var(--soft-blue)) 30%, 
+    hsl(var(--pearl-white)) 70%, 
+    hsl(var(--victorian-cream)) 100%);
+  position: relative;
 }
 
-.paper-texture {
-    background-image: url('./assets/images/paper-texture.png');
-    background-size: 400px;
-    background-repeat: repeat;
-    opacity: 0.4;
+.parallax-education {
+  background: linear-gradient(165deg, 
+    hsl(var(--pearl-white)) 0%, 
+    hsl(var(--victorian-cream)) 25%, 
+    hsl(var(--soft-blue)) 75%, 
+    hsl(var(--sky-blue)) 100%);
+  position: relative;
 }
 
-.shadow-victorian {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 20px 5px rgba(200, 180, 100, 0.3);
+/* Victorian Pattern Overlays */
+.victorian-pattern-1 {
+  background-image: 
+    radial-gradient(circle at 25% 25%, hsl(var(--antique-gold) / 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, hsl(var(--ocean) / 0.08) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 30%, hsl(var(--victorian-gold) / 0.05) 50%, transparent 70%);
 }
 
-.shadow-soft {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+.victorian-pattern-2 {
+  background-image: 
+    radial-gradient(ellipse at 20% 80%, hsl(var(--deep-navy) / 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, hsl(var(--sage) / 0.08) 0%, transparent 60%),
+    conic-gradient(from 45deg at 50% 50%, transparent 0deg, hsl(var(--victorian-dusty-blue) / 0.04) 90deg, transparent 180deg);
 }
 
-.shadow-medium {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+.victorian-pattern-3 {
+  background-image: 
+    repeating-linear-gradient(45deg, transparent, transparent 20px, hsl(var(--warm-cream) / 0.3) 21px, hsl(var(--warm-cream) / 0.3) 22px),
+    repeating-linear-gradient(-45deg, transparent, transparent 20px, hsl(var(--antique-gold) / 0.2) 21px, hsl(var(--antique-gold) / 0.2) 22px);
 }
 
-.shadow-strong {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+/* Enhanced Glass Effects */
+.glass-card {
+  background: linear-gradient(135deg, 
+    hsl(var(--pearl-white) / 0.25) 0%, 
+    hsl(var(--warm-cream) / 0.15) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid hsl(var(--victorian-gold) / 0.2);
+  box-shadow: 
+    0 8px 32px hsl(var(--deep-navy) / 0.15),
+    inset 0 1px 0 hsl(var(--pearl-white) / 0.3),
+    inset 0 -1px 0 hsl(var(--ocean) / 0.1);
 }
 
-.animate-subtle-breathe {
-    animation: subtle-breathe 5s ease-in-out infinite;
+.glass-card-dark {
+  background: linear-gradient(135deg, 
+    hsl(var(--deep-navy) / 0.4) 0%, 
+    hsl(var(--rich-blue) / 0.3) 100%);
+  backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid hsl(var(--sky-blue) / 0.3);
 }
 
-.animate-gentle-float {
-    animation: gentle-float 6s ease-in-out infinite;
+/* Victorian Decorative Elements */
+.victorian-ornament {
+  position: relative;
 }
 
-.cursor-popoppins {
-    cursor: url('./assets/cursors/feather-pen.png'), auto;
+.victorian-ornament::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, 
+    hsl(var(--antique-gold) / 0.8) 0%, 
+    hsl(var(--victorian-gold) / 0.4) 50%, 
+    transparent 100%);
+  border-radius: 50%;
+  animation: ornament-glow 4s ease-in-out infinite;
 }
 
-.floating-element {
-    animation: gentle-float 5s ease-in-out infinite;
+.victorian-frame {
+  position: relative;
+  padding: 2rem;
 }
 
-.flower-accent {
+.victorian-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, 
+    hsl(var(--antique-gold) / 0.3) 0%, 
+    transparent 25%, 
+    transparent 75%, 
+    hsl(var(--antique-gold) / 0.3) 100%);
+  border-radius: inherit;
+  padding: 3px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+}
+
+/* Advanced Animations */
+@keyframes ornament-glow {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
     opacity: 0.6;
-    transform: rotate(-15deg);
+  }
+  50% { 
+    transform: scale(1.2) rotate(180deg);
+    opacity: 1;
+  }
 }
 
-@keyframes subtle-breathe {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-6px);
-    }
+@keyframes parallax-float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) translateX(5px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-8px) translateX(-3px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-20px) translateX(8px) rotate(-1deg);
+  }
 }
 
-@keyframes gentle-float {
-    0%, 100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-8px) rotate(2deg);
-    }
+@keyframes depth-shift {
+  0%, 100% {
+    transform: translateZ(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateZ(50px) rotateX(5deg);
+  }
 }
 
-/* Enhanced Parallax and Animation Utilities */
-.parallax-bg {
+@keyframes victorian-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Enhanced Parallax Utilities */
+.parallax-layer {
+  position: absolute;
   will-change: transform;
 }
 
-.floating-card {
-  animation: gentle-float 4s ease-in-out infinite;
+.parallax-slow {
+  animation: parallax-float 12s ease-in-out infinite;
 }
 
-.skill-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.parallax-medium {
+  animation: parallax-float 8s ease-in-out infinite reverse;
 }
 
-.skill-card:hover {
-  transform: translateY(-5px) scale(1.02);
+.parallax-fast {
+  animation: parallax-float 6s ease-in-out infinite;
 }
 
-.education-card {
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+.depth-layer {
+  animation: depth-shift 10s ease-in-out infinite;
 }
 
-/* Victorian ornament animations */
-.victorian-ornament {
-  animation: rotate-ornament 20s linear infinite;
+/* Victorian Typography */
+.victorian-heading {
+  background: linear-gradient(135deg, 
+    hsl(var(--deep-navy)) 0%, 
+    hsl(var(--rich-blue)) 50%, 
+    hsl(var(--ocean)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
 }
 
-@keyframes rotate-ornament {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.victorian-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    hsl(var(--antique-gold)) 50%, 
+    transparent 100%);
 }
 
-/* Photo stack enhancements */
-.photo-stack-container {
-  perspective: 1500px;
+/* Enhanced Shadows */
+.shadow-victorian-deep {
+  box-shadow: 
+    0 4px 6px -1px hsl(var(--deep-navy) / 0.1),
+    0 2px 4px -1px hsl(var(--deep-navy) / 0.06),
+    0 20px 40px -10px hsl(var(--ocean) / 0.3),
+    inset 0 1px 0 hsl(var(--pearl-white) / 0.1);
+}
+
+.shadow-floating {
+  box-shadow: 
+    0 25px 50px -12px hsl(var(--deep-navy) / 0.25),
+    0 10px 20px -5px hsl(var(--ocean) / 0.2),
+    0 0 0 1px hsl(var(--victorian-gold) / 0.1);
+}
+
+/* Interactive Elements */
+.interactive-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
 
-/* Smooth scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+.interactive-card:hover {
+  transform: translateY(-8px) rotateX(5deg) rotateY(2deg);
+  box-shadow: 
+    0 35px 60px -15px hsl(var(--deep-navy) / 0.3),
+    0 15px 25px -8px hsl(var(--ocean) / 0.25);
 }
 
-::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+/* Scroll-triggered animations */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--ocean));
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--victorian-dusty-blue));
-}
-
-/* Touch optimizations */
-* {
-  -webkit-tap-highlight-color: transparent;
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Performance optimizations */
-.will-change-transform {
-  will-change: transform;
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }
 
-.will-change-opacity {
-  will-change: opacity;
+.reduce-motion {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Responsive parallax adjustments */
+@media (max-width: 768px) {
+  .parallax-layer {
+    animation-duration: 1.5x;
+  }
+  
+  .glass-card {
+    backdrop-filter: blur(10px);
+  }
 }
