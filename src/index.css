@@ -2,525 +2,199 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 45 45% 97%;
-    --foreground: 205 35% 25%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --ring-offset-background: 0 0% 100%;
+    --ring-offset-foreground: 222.2 47.4% 11.2%;
+    --radius: 0.5rem;
 
-    --card: 45 50% 98%;
-    --card-foreground: 205 35% 25%;
+    --ocean: 210, 79%, 44%;
+    --sage: 142, 53%, 36%;
+    --victorian-navy: 223, 34%, 30%;
+    --victorian-cream: 48, 88%, 95%;
+    --victorian-gold: 47, 81%, 64%;
+    --victorian-dusty-blue: 215, 23%, 51%;
 
-    --popover: 45 50% 98%;
-    --popover-foreground: 205 35% 25%;
-
-    --primary: 205 50% 30%;
-    --primary-foreground: 45 45% 97%;
-
-    --secondary: 200 25% 88%;
-    --secondary-foreground: 205 35% 25%;
-
-    --muted: 200 20% 92%;
-    --muted-foreground: 205 20% 45%;
-
-    --accent: 45 40% 90%;
-    --accent-foreground: 205 35% 25%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 45 45% 97%;
-
-    --border: 200 25% 85%;
-    --input: 200 25% 85%;
-    --ring: 205 50% 30%;
-
-    --radius: 0.375rem;
-
-    --sidebar-background: 45 45% 98%;
-    --sidebar-foreground: 205 35% 25%;
-    --sidebar-primary: 205 50% 30%;
-    --sidebar-primary-foreground: 45 45% 97%;
-    --sidebar-accent: 200 25% 90%;
-    --sidebar-accent-foreground: 205 35% 25%;
-    --sidebar-border: 200 25% 82%;
-    --sidebar-ring: 205 50% 30%;
-
-    /* Enhanced palette colors with your specified palette */
-    --sage: 205 60% 20%;        /* #113F67 -> Deep Blue (darker) */
-    --ocean: 205 49% 40%;       /* #34699A -> Medium Blue */
-    --sky: 200 50% 65%;         /* #58A0C8 -> Light Blue */
-    --cream: 54 89% 84%;        /* #FDF5AA -> Cream Yellow */
-    --warm-beige: 45 35% 92%;   /* Lighter warm beige */
-    --soft-blue: 200 45% 90%;   /* Very soft blue */
-    
-    /* 1860s Victorian-inspired colors */
-    --victorian-navy: 220 40% 15%;
-    --victorian-gold: 45 85% 75%;
-    --victorian-sage: 130 25% 35%;
-    --victorian-cream: 40 30% 95%;
-    --victorian-dusty-blue: 200 30% 70%;
+    --soft-blue: 207, 67%, 94%;
+    --cream: 45, 75%, 94%;
   }
 
   .dark {
-    --background: 205 35% 8%;
-    --foreground: 45 45% 95%;
-
-    --card: 205 35% 10%;
-    --card-foreground: 45 45% 95%;
-
-    --popover: 205 35% 10%;
-    --popover-foreground: 45 45% 95%;
-
-    --primary: 45 45% 95%;
-    --primary-foreground: 205 35% 8%;
-
-    --secondary: 205 35% 20%;
-    --secondary-foreground: 45 45% 95%;
-
-    --muted: 205 35% 15%;
-    --muted-foreground: 45 25% 65%;
-
-    --accent: 205 35% 15%;
-    --accent-foreground: 45 45% 95%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 45 45% 95%;
-
-    --border: 205 35% 20%;
-    --input: 205 35% 20%;
-    --ring: 45 45% 95%;
-
-    --sidebar-background: 205 35% 5%;
-    --sidebar-foreground: 45 45% 90%;
-    --sidebar-primary: 45 45% 95%;
-    --sidebar-primary-foreground: 205 35% 8%;
-    --sidebar-accent: 205 35% 12%;
-    --sidebar-accent-foreground: 45 45% 90%;
-    --sidebar-border: 205 35% 12%;
-    --sidebar-ring: 45 45% 95%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 224.3 76.3% 48%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --ring-offset-background: 224.3 76.3% 48%;
+    --ring-offset-foreground: 210 40% 98%;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground font-inter;
-    font-feature-settings: "liga" 1, "calt" 1;
-    line-height: 1.6;
-  }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground));
-  border-radius: 2px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary));
-}
-
-/* Enhanced gradient backgrounds with elegant color divisions */
-.gradient-primary {
-  background: linear-gradient(135deg, hsl(var(--sage)) 0%, hsl(var(--ocean)) 50%, hsl(var(--sky)) 100%);
-}
-
-.gradient-soft {
-  background: linear-gradient(135deg, hsl(var(--cream)) 0%, hsl(var(--soft-blue)) 100%);
-}
-
-.gradient-accent {
-  background: linear-gradient(135deg, hsl(var(--sky)) 0%, hsl(var(--cream)) 100%);
-}
-
-.gradient-victorian {
-  background: linear-gradient(135deg, hsl(var(--victorian-cream)) 0%, hsl(var(--victorian-dusty-blue)) 50%, hsl(var(--victorian-navy)) 100%);
-}
-
-.gradient-elegant {
-  background: linear-gradient(
-    135deg, 
-    hsl(var(--warm-beige)) 0%, 
-    hsl(var(--cream) / 0.8) 25%,
-    hsl(var(--soft-blue) / 0.6) 75%,
-    hsl(var(--sky) / 0.4) 100%
-  );
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, hsl(var(--sage)) 0%, hsl(var(--ocean)) 50%, hsl(var(--sky)) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Victorian-inspired paper textures for different sections */
-.paper-texture {
-  background-color: hsl(var(--victorian-cream));
-  background-image: 
-    radial-gradient(circle at 25% 25%, hsl(var(--muted) / 0.3) 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, hsl(var(--sky) / 0.1) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-.paper-texture-blue {
-  background: linear-gradient(135deg, hsl(var(--soft-blue)) 0%, hsl(var(--victorian-cream)) 100%);
-  background-image: 
-    radial-gradient(circle at 20% 80%, hsl(var(--ocean) / 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 80% 20%, hsl(var(--sage) / 0.05) 1px, transparent 1px);
-  background-size: 80px 80px, 40px 40px;
-}
-
-.paper-texture-cream {
-  background: linear-gradient(135deg, hsl(var(--cream)) 0%, hsl(var(--warm-beige)) 100%);
-  background-image: 
-    radial-gradient(circle at 30% 40%, hsl(var(--victorian-gold) / 0.1) 1px, transparent 1px),
-    radial-gradient(circle at 70% 70%, hsl(var(--ocean) / 0.05) 1px, transparent 1px);
-  background-size: 90px 90px, 45px 45px;
-}
-
-.paper-texture-sage {
-  background: linear-gradient(135deg, hsl(var(--sage) / 0.05) 0%, hsl(var(--victorian-cream)) 50%, hsl(var(--soft-blue) / 0.1) 100%);
-  background-image: 
-    radial-gradient(circle at 40% 60%, hsl(var(--victorian-sage) / 0.1) 1px, transparent 1px),
-    radial-gradient(circle at 80% 30%, hsl(var(--ocean) / 0.08) 1px, transparent 1px);
-  background-size: 70px 70px, 35px 35px;
-}
-
-/* 1860s Victorian decorative elements */
-.victorian-border {
-  border-image: linear-gradient(
-    45deg,
-    hsl(var(--victorian-gold)),
-    hsl(var(--victorian-navy)),
-    hsl(var(--victorian-gold))
-  ) 1;
-}
-
-.victorian-ornament::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    hsl(var(--victorian-gold)),
-    hsl(var(--victorian-navy)),
-    hsl(var(--victorian-gold)),
-    transparent
-  );
-}
-
-.victorian-frame {
-  position: relative;
-  padding: 2rem;
-  background: hsl(var(--victorian-cream));
-  border: 2px solid hsl(var(--victorian-gold));
-  box-shadow: 
-    inset 0 0 0 4px hsl(var(--victorian-cream)),
-    inset 0 0 0 6px hsl(var(--victorian-navy) / 0.2),
-    0 8px 32px hsl(var(--victorian-navy) / 0.1);
-}
-
-.victorian-frame::before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  border: 1px solid hsl(var(--victorian-gold) / 0.5);
-  pointer-events: none;
-}
-
-/* Organic shapes with improved visual appeal */
-.organic-shape {
-  border-radius: 45% 55% 65% 35% / 35% 45% 55% 65%;
-}
-
-.organic-shape-2 {
-  border-radius: 65% 35% 45% 55% / 55% 65% 35% 45%;
-}
-
-/* Victorian-inspired botanical decorations */
 .botanical-decoration {
-  position: relative;
-}
-
-.botanical-decoration::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cg fill='none' stroke='%23113F67' stroke-width='0.5' opacity='0.1'%3E%3Cpath d='M30 10c10 0 18 8 18 18s-8 18-18 18-18-8-18-18 8-18 18-18z'/%3E%3Cpath d='M30 15c7 0 13 6 13 13s-6 13-13 13-13-6-13-13 6-13 13-13z'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 60px 60px;
+  background-image: url('./assets/images/floral-bg.png');
+  background-size: 300px;
   background-repeat: repeat;
-  opacity: 0.3;
-  pointer-events: none;
+  opacity: 0.4;
 }
 
-/* Enhanced animations */
-@keyframes gentle-float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-6px) rotate(1deg); }
-  66% { transform: translateY(-2px) rotate(-0.5deg); }
+.hero-bg {
+    background-image: url('./assets/images/bg-hero.png');
+    background-size: cover;
+    background-position: center;
 }
 
-@keyframes soft-drift {
-  0%, 100% { transform: translate(0px, 0px) rotate(0deg); }
-  25% { transform: translate(4px, -4px) rotate(1deg); }
-  50% { transform: translate(-2px, 2px) rotate(-0.5deg); }
-  75% { transform: translate(2px, -6px) rotate(0.5deg); }
-}
-
-@keyframes subtle-breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-}
-
-@keyframes victorian-shimmer {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
-.animate-gentle-float {
-  animation: gentle-float 12s ease-in-out infinite;
-}
-
-.animate-soft-drift {
-  animation: soft-drift 16s ease-in-out infinite;
-}
-
-.animate-subtle-breathe {
-  animation: subtle-breathe 8s ease-in-out infinite;
-}
-
-.animate-victorian-shimmer {
-  background: linear-gradient(90deg, #0d9488, #3b82f6, #0d9488);
-  background-size: 200% 100%;
-  animation: victorian-shimmer 3s linear infinite;
-}
-
-/* Typography enhancements */
-.font-display {
-  font-family: 'Playfair Display', serif;
-  font-feature-settings: "liga" 1, "dlig" 1;
-}
-
-.font-body {
-  font-family: 'Inter', sans-serif;
-}
-
-.tracking-wide {
-  letter-spacing: 0.025em;
-}
-
-.tracking-wider {
-  letter-spacing: 0.05em;
-}
-
-.text-balance {
-  text-wrap: balance;
-}
-
-/* Enhanced glass effect with Victorian touch */
-.glass-effect {
-  background: rgba(253, 245, 170, 0.15);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(52, 105, 154, 0.2);
-  box-shadow: 0 8px 32px rgba(17, 63, 103, 0.1);
-}
-
-.glass-effect-blue {
-  background: rgba(88, 160, 200, 0.1);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(17, 63, 103, 0.15);
-}
-
-/* Improved shadows for better contrast */
-.shadow-soft {
-  box-shadow: 0 4px 20px -2px rgba(17, 63, 103, 0.08);
-}
-
-.shadow-medium {
-  box-shadow: 0 8px 30px -4px rgba(17, 63, 103, 0.12);
-}
-
-.shadow-strong {
-  box-shadow: 0 12px 40px -4px rgba(17, 63, 103, 0.18);
+.paper-texture {
+    background-image: url('./assets/images/paper-texture.png');
+    background-size: 400px;
+    background-repeat: repeat;
+    opacity: 0.4;
 }
 
 .shadow-victorian {
-  box-shadow: 
-    0 4px 20px rgba(17, 63, 103, 0.1),
-    inset 0 1px 0 rgba(253, 245, 170, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 0 20px 5px rgba(200, 180, 100, 0.3);
 }
 
-/* Enhanced decorative elements with Victorian flair */
-.silk-texture {
-  background: linear-gradient(135deg, 
-    hsl(var(--cream)) 0%, 
-    hsl(var(--victorian-dusty-blue) / 0.3) 25%,
-    hsl(var(--ocean) / 0.2) 75%,
-    hsl(var(--sage) / 0.1) 100%
-  );
+.shadow-soft {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-medium {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.shadow-strong {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.animate-subtle-breathe {
+    animation: subtle-breathe 5s ease-in-out infinite;
+}
+
+.animate-gentle-float {
+    animation: gentle-float 6s ease-in-out infinite;
+}
+
+.cursor-popoppins {
+    cursor: url('./assets/cursors/feather-pen.png'), auto;
+}
+
+.floating-element {
+    animation: gentle-float 5s ease-in-out infinite;
 }
 
 .flower-accent {
-  filter: drop-shadow(0 2px 8px rgba(17, 63, 103, 0.15));
+    opacity: 0.6;
+    transform: rotate(-15deg);
 }
 
-/* Color-specific utility classes */
-.text-sage {
-  color: hsl(var(--sage));
+@keyframes subtle-breathe {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
 }
 
-.text-ocean {
-  color: hsl(var(--ocean));
+@keyframes gentle-float {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(2deg);
+    }
 }
 
-.text-sky {
-  color: hsl(var(--sky));
+/* Enhanced Parallax and Animation Utilities */
+.parallax-bg {
+  will-change: transform;
 }
 
-.text-cream {
-  color: hsl(var(--cream));
+.floating-card {
+  animation: gentle-float 4s ease-in-out infinite;
 }
 
-.text-victorian-navy {
-  color: hsl(var(--victorian-navy));
+.skill-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.text-victorian-gold {
-  color: hsl(var(--victorian-gold));
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.02);
 }
 
-.bg-sage {
-  background-color: hsl(var(--sage));
+.education-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.bg-ocean {
-  background-color: hsl(var(--ocean));
+/* Victorian ornament animations */
+.victorian-ornament {
+  animation: rotate-ornament 20s linear infinite;
 }
 
-.bg-sky {
-  background-color: hsl(var(--sky));
+@keyframes rotate-ornament {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-.bg-cream {
-  background-color: hsl(var(--cream));
+/* Photo stack enhancements */
+.photo-stack-container {
+  perspective: 1500px;
+  transform-style: preserve-3d;
 }
 
-.bg-victorian-cream {
-  background-color: hsl(var(--victorian-cream));
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.bg-victorian-gold {
-  background-color: hsl(var(--victorian-gold));
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
 }
 
-/* Hover effects with improved contrast */
-.hover-sage:hover {
-  background-color: hsl(var(--sage));
-  color: hsl(var(--cream));
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--ocean));
+  border-radius: 4px;
 }
 
-.hover-ocean:hover {
-  background-color: hsl(var(--ocean));
-  color: white;
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--victorian-dusty-blue));
 }
 
-.hover-sky:hover {
-  background-color: hsl(var(--sky));
-  color: hsl(var(--sage));
+/* Touch optimizations */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
-.hover-victorian:hover {
-  background-color: hsl(var(--victorian-gold));
-  color: hsl(var(--victorian-navy));
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
 }
 
-/* Section-specific background classes */
-.hero-bg {
-  background: linear-gradient(135deg, 
-    hsl(var(--victorian-cream)) 0%, 
-    hsl(var(--soft-blue) / 0.3) 50%,
-    hsl(var(--cream) / 0.8) 100%
-  );
-}
-
-.about-bg {
-  background: linear-gradient(135deg, 
-    hsl(var(--cream) / 0.4) 0%, 
-    hsl(var(--victorian-cream)) 50%,
-    hsl(var(--warm-beige)) 100%
-  );
-}
-
-.education-bg {
-  background: linear-gradient(135deg, 
-    hsl(var(--soft-blue) / 0.2) 0%, 
-    hsl(var(--victorian-dusty-blue) / 0.3) 50%,
-    hsl(var(--victorian-cream)) 100%
-  );
-}
-
-.experience-bg {
-  background: linear-gradient(135deg, 
-    hsl(var(--victorian-cream)) 0%, 
-    hsl(var(--cream) / 0.6) 50%,
-    hsl(var(--victorian-gold) / 0.1) 100%
-  );
-}
-
-.skills-bg {
-  background: linear-gradient(135deg, 
-    hsl(var(--sage) / 0.05) 0%, 
-    hsl(var(--victorian-cream)) 50%,
-    hsl(var(--soft-blue) / 0.2) 100%
-  );
-}
-
-.projects-bg {
-  background: linear-gradient(135deg, 
-    hsl(var(--ocean) / 0.08) 0%, 
-    hsl(var(--victorian-cream)) 50%,
-    hsl(var(--cream) / 0.4) 100%
-  );
-}
-
-.gallery-bg {
-  background: linear-gradient(135deg, 
-    hsl(var(--warm-beige)) 0%, 
-    hsl(var(--victorian-cream)) 50%,
-    hsl(var(--sky) / 0.1) 100%
-  );
-}
-
-.contact-bg {
-  background: linear-gradient(135deg, 
-    hsl(var(--victorian-dusty-blue) / 0.2) 0%, 
-    hsl(var(--cream) / 0.5) 50%,
-    hsl(var(--victorian-cream)) 100%
-  );
+.will-change-opacity {
+  will-change: opacity;
 }

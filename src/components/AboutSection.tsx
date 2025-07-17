@@ -10,8 +10,10 @@ gsap.registerPlugin(ScrollTrigger);
 const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Content animation
     gsap.fromTo(contentRef.current?.children,
       { y: 30, opacity: 0 },
       {
@@ -27,6 +29,35 @@ const AboutSection = () => {
         }
       }
     );
+
+    // Parallax background effect
+    gsap.to(bgRef.current, {
+      yPercent: -30,
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1
+      }
+    });
+
+    // Floating animation for skill cards
+    gsap.set(".skill-card", { transformOrigin: "center center" });
+    gsap.to(".skill-card", {
+      y: -10,
+      duration: 2,
+      ease: "sine.inOut",
+      stagger: 0.2,
+      repeat: -1,
+      yoyo: true,
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top center",
+        end: "bottom center",
+        toggleActions: "play pause play pause"
+      }
+    });
   }, []);
 
   const skills = [
@@ -37,7 +68,7 @@ const AboutSection = () => {
     },
     {
       icon: Lightbulb,
-      title: "Problem-Solving",
+      title: "Problem-Solving", 
       description: "Critical thinking, analytical skills, creative solutions"
     },
     {
@@ -48,14 +79,20 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-background"
+    <section id="about" ref={sectionRef} className="py-20 bg-background relative overflow-hidden">
+      {/* Parallax Background */}
+      <div 
+        ref={bgRef}
+        className="absolute inset-0 w-full h-[120%] -top-[10%]"
         style={{
           backgroundImage: `url(${aboutBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundColor: 'rgba(0, 0, 50, 0.5)' // Fallback color
-        }}>
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          opacity: 0.3
+        }}
+      />
+      
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div ref={contentRef} className="space-y-16">
           
           {/* Header */}
@@ -123,7 +160,7 @@ const AboutSection = () => {
                 {skills.map((skill, index) => (
                   <div 
                     key={index}
-                    className="bg-card border border-border p-6 rounded-lg shadow-soft hover:shadow-medium transition-all duration-300"
+                    className="skill-card bg-card border border-border p-6 rounded-lg shadow-soft hover:shadow-medium transition-all duration-300"
                   >
                     <div className="space-y-3">
                       <div className="flex items-center gap-3">
@@ -144,6 +181,12 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Victorian decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-4 w-24 h-24 bg-victorian-gold/10 rounded-full blur-2xl animate-gentle-float"></div>
+        <div className="absolute bottom-1/3 right-8 w-32 h-32 bg-victorian-dusty-blue/15 rounded-full blur-3xl animate-subtle-breathe"></div>
       </div>
     </section>
   );

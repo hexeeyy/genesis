@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { GraduationCap, Award, Calendar, MapPin } from 'lucide-react';
 import gsap from 'gsap';
@@ -9,8 +8,10 @@ gsap.registerPlugin(ScrollTrigger);
 const EducationSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
+  const timelineLineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Timeline items animation
     gsap.fromTo(timelineRef.current?.children,
       { x: -30, opacity: 0 },
       {
@@ -26,6 +27,35 @@ const EducationSection = () => {
         }
       }
     );
+
+    // Animated timeline line reveal
+    gsap.fromTo(timelineLineRef.current,
+      { scaleY: 0, transformOrigin: "top center" },
+      {
+        scaleY: 1,
+        duration: 1.5,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+          toggleActions: "play none none reverse"
+        }
+      }
+    );
+
+    // Parallax effect for education cards
+    gsap.utils.toArray(".education-card").forEach((card: any, index) => {
+      gsap.to(card, {
+        y: -20 + (index * 5),
+        ease: "none",
+        scrollTrigger: {
+          trigger: card,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1
+        }
+      });
+    });
   }, []);
 
   const education = [
@@ -61,7 +91,7 @@ const EducationSection = () => {
   ];
 
   return (
-    <section id="education" ref={sectionRef} className="py-20 bg-card paper-texture">
+    <section id="education" ref={sectionRef} className="py-20 bg-card paper-texture relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="space-y-16">
           
@@ -79,23 +109,26 @@ const EducationSection = () => {
 
           {/* Timeline */}
           <div ref={timelineRef} className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-border"></div>
+            {/* Animated timeline line */}
+            <div 
+              ref={timelineLineRef}
+              className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-ocean via-victorian-dusty-blue to-ocean"
+            ></div>
             
             <div className="space-y-12">
               {education.map((edu, index) => (
-                <div key={index} className="relative flex items-start gap-8">
-                  {/* Timeline dot */}
+                <div key={index} className="relative flex items-start gap-8 education-card">
+                  {/* Timeline dot with pulse animation */}
                   <div className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center shadow-medium ${
-                    edu.current ? 'bg-ocean' : 'bg-card border-2 border-ocean'
+                    edu.current ? 'bg-ocean animate-pulse' : 'bg-card border-2 border-ocean'
                   }`}>
                     <GraduationCap className={`w-7 h-7 ${
                       edu.current ? 'text-white' : 'text-ocean'
                     }`} />
                   </div>
 
-                  {/* Content */}
-                  <div className="flex-1 bg-background border border-border rounded-lg p-6 shadow-soft hover:shadow-medium transition-all duration-300">
+                  {/* Content with hover effects */}
+                  <div className="flex-1 bg-background border border-border rounded-lg p-6 shadow-soft hover:shadow-strong hover:scale-[1.02] transition-all duration-500">
                     <div className="space-y-4">
                       <div className="flex items-start justify-between">
                         <div>
@@ -137,6 +170,12 @@ const EducationSection = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Floating decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 right-8 w-20 h-20 bg-victorian-gold/20 rounded-full blur-2xl animate-gentle-float"></div>
+        <div className="absolute bottom-1/4 left-12 w-28 h-28 bg-soft-blue/20 rounded-full blur-3xl animate-subtle-breathe"></div>
       </div>
     </section>
   );
