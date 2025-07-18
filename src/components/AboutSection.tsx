@@ -57,17 +57,17 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 hero-bg paper-texture">
+    <section id="about" ref={sectionRef} className="py-20 bg-gradient-to-r from-palette-sage to-palette-ocean relative">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div ref={contentRef} className="space-y-16">
           
           {/* Header */}
           <div className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-light text-foreground font-display">
+            <h2 className="text-4xl md:text-5xl font-light text-palette-cream font-display">
               About Me
             </h2>
             <div className="w-12 h-px bg-ocean mx-auto"></div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-inter font-light leading-relaxed">
+            <p className="text-lg text-palette-cream/50 max-w-2xl mx-auto font-poppins font-light leading-relaxed">
               A dedicated psychology student with a passion for understanding human behavior 
               and making a positive impact through research and community service.
             </p>

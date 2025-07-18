@@ -81,13 +81,13 @@ const PhotoStack = () => {
           <div
           className="relative aspect-[3/4] bg-transparent rounded-lg flex items-center justify-center overflow-visible shadow-lg bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundImage})` }}
-        >
+          >
           {props.map(({ x, y, rot, scale }, i) => (
             <animated.div
               key={photos[i]}
               className="absolute inset-0 flex items-center justify-center"
               style={{ x, y }}
-            >
+              >
               <animated.div
                 {...bind(i)}
                 className="w-[80%] h-[80%] sm:w-[65%] sm:h-[65%] rounded-md cursor-grab active:cursor-grabbing shadow-victorian hover:shadow-[0_0_20px_8px_rgba(255,200,100,0.4)] transition-shadow duration-300"
