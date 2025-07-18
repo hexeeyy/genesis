@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react';
 import { Award, MessageCircle, Users2, Lightbulb } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import aboutBackground from '../assets/images/bg-about.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,13 +57,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 bg-background"
-        style={{
-          backgroundImage: `url(${aboutBackground})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundColor: 'rgba(0, 0, 50, 0.5)' // Fallback color
-        }}>
+    <section id="about" ref={sectionRef} className="py-20 hero-bg paper-texture">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div ref={contentRef} className="space-y-16">
           
