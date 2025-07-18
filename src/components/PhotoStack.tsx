@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import backgroundImage from '../assets/images/bg-stack.png';
 import { useSprings, animated, to as interpolate } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
+import backgroundImage from '../assets/images/bg-stack.png';
 
 const photos = [
   '/gen.jpg',
@@ -9,6 +9,7 @@ const photos = [
   '/gen2.jpg',
   '/gen3.jpg',
 ];
+
 
 // Animation helpers
 const to = (i: number) => ({
@@ -23,7 +24,8 @@ const from = (_i: number) => ({
   x: 0, 
   rot: 0, 
   scale: 1.2, 
-  y: -800 
+  y: -800,
+  opacity: 0,
 });
 
 // Transform function for 3D perspective
@@ -38,36 +40,39 @@ const PhotoStack = () => {
     from: from(i),
   }));
 
-  const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity: [vx] }) => {
-  const velocity = Math.abs(vx);
-    const trigger = velocity > 0.3;
-    const dir = xDir < 0 ? -1 : 1;
+  const bind = useDrag
+    (({ args: [index], down, movement: [mx], direction: [xDir], velocity: [vx] }) => {
+      const velocity = Math.abs(vx);
+      const trigger = velocity > 0.3;
+      const dir = xDir < 0 ? -1 : 1;
 
-    if (!down && trigger) gone.add(index);
+      if (!down && trigger) gone.add(index);
 
-    api.start(i => {
-      if (index !== i) return;
-      const isGone = gone.has(index);
-      const x = isGone ? (300 + window.innerWidth) * dir : down ? mx : 0;
-      const rot = mx / 80 + (isGone ? dir * 15 * velocity : 0);
-      const scale = down ? 1.1 : 1;
+      api.start(i => {
+        if (index !== i) return;
+        const isGone = gone.has(index);
+        const x = isGone ? (300 + window.innerWidth) * dir : down ? mx : 0;
+        const rot = mx / 80 + (isGone ? dir * 15 * velocity : 0);
+        const scale = down ? 1.1 : 1;
+        const opacity = isGone ? 0 : 1; // Fade out when gone
 
-      return {
-        x,
-        rot,
-        scale,
-        delay: undefined,
-        config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
-      };
-    });
+        return {
+          x,
+          rot,
+          scale,
+          opacity,
+          delay: undefined,
+          config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
+        };
+      });
 
-    
-    if (!down && gone.size === photos.length) {
-      setTimeout(() => {
-        gone.clear();
-        api.start(i => to(i));
-      }, 800);
-    }
+      
+      if (!down && gone.size === photos.length) {
+        setTimeout(() => {
+          gone.clear();
+          api.start(i => to(i));
+        }, 800);
+      }
   });
 
   return (
