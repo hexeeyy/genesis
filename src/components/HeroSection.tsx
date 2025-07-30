@@ -144,7 +144,7 @@ const HeroSection = () => {
          <div ref={photoRef} className="relative flex justify-center items-center w-auto h-auto">
             <PhotoStack />
             <img
-              src="/src/assets/images/bird.png"
+              src="/bird.png"
               alt="Flying bird"
               className="absolute right-0 top-1 w-40 h-40 z-20 select-none pointer-events-none"
             />
