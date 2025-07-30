@@ -101,7 +101,7 @@ const HeroSection = () => {
         </div>
       <div ref={heroRef} className="w-full max-w-[1100px] mx-auto px-6 sm:px-8 lg:px-16">
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mt-10">
           {/* Left Column - Text Content */}
           <div ref={textRef} className="space-y-8 z-10 relative">
             <div className="space-y-6">
@@ -115,7 +115,6 @@ const HeroSection = () => {
                   P. Martin
                 </span>
               </h1>
-              <hr />
               <h2 className="text-lg md:text-xl font-light text-muted-foreground max-w-lg font-poppins leading-relaxed">
                 Understanding the human mind through <br/>
                 <span className="text-ocean font-medium"> evidence-based research</span><br/> National University - Manila
@@ -142,11 +141,17 @@ const HeroSection = () => {
           </div>
 
           {/* Right Column - Image */}
-          <div ref={photoRef} className="">
+         <div ref={photoRef} className="relative flex justify-center items-center w-auto h-auto">
             <PhotoStack />
+            <img
+              src="/src/assets/images/bird.png"
+              alt="Flying bird"
+              className="absolute right-0 top-1 w-40 h-40 z-20 select-none pointer-events-none"
+            />
           </div>
         </div>
       </div>
+      
       {/* Scroll Indicator */}
       <div
         onClick={handleViewWork}
